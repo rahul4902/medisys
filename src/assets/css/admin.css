@@ -32,18 +32,7 @@
   --input-background: black;
   --input-color: white;
 } */
-
-body,
-html {
-  font-size: 16px;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: Inter, sans-serif;
-  /* background: #1e293b; */
-  /* color: #475569; */
-}
-a,
+.admin-app a,
 abbr,
 acronym,
 address,
@@ -132,12 +121,12 @@ video {
   vertical-align: baseline;
 }
 
-svg:not(:root) {
+.admin-app svg:not(:root) {
   overflow: hidden;
   color: rgb(100 116 139 / 1);
 }
 
-.form-control {
+.admin-app .form-control {
   background-color: var(--input-background) !important;
   color: var(--input-color) !important;
 }
@@ -152,7 +141,7 @@ svg:not(:root) {
   background-color: var(--background-color);
   min-height: 100vh;
 }
-.main {
+.admin-app .main {
   padding: 20px;
 }
 
@@ -182,7 +171,7 @@ svg:not(:root) {
   fill: var(--light-text);
 }
 
-.admin-app .side-bar {
+.side-bar {
   display: flex;
   background-color: var(--side-bar-light-color);
   transition: transform 0.3s;
@@ -258,7 +247,7 @@ svg:not(:root) {
   overflow: hidden;
 }
 
-.card {
+.admin-app .card {
   background-color: rgb(255 255 255 / 1);
   border-radius: 0.375rem;
   margin-bottom: 25px;
@@ -268,7 +257,7 @@ svg:not(:root) {
   box-shadow: 0 0 #0000, 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   margin-bottom: 25px;
 }
-.h-title {
+.admin-app .h-title {
   font-weight: 600;
   line-height: 1.75rem;
   font-size: 1.125rem;
@@ -276,7 +265,7 @@ svg:not(:root) {
   color: #475569;
   margin-bottom: 0;
 }
-.css-2ulfj5-MuiTypography-root {
+.admin-app .css-2ulfj5-MuiTypography-root {
   font-weight: 600 !important;
   line-height: 1.75rem !important;
   font-size: 1.125rem !important;
@@ -284,19 +273,19 @@ svg:not(:root) {
   color: #475569 !important;
   margin-bottom: 0 !important;
 }
-.card .card-header {
+.admin-app .card .card-header {
   color: var(--text-color);
   padding: 10px;
   border-color: var(--gray-color);
   background-color: #ffffff00 !important;
 }
-.card .card-body {
+.admin-app .card .card-body {
   padding: 1.5rem;
   color: var(--text-color);
   border-color: var(--gray-color);
   background-color: #ffffff00 !important;
 }
-.card .card-header h1,
+.admin-app .card .card-header h1,
 h2,
 h3,
 h4,
@@ -308,7 +297,7 @@ h6 {
   font-weight: 400;
 }
 
-.profile-btn {
+.admin-app .profile-btn {
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -328,7 +317,7 @@ h6 {
   padding: 5px 20px 5px 0;
 } */
 
-.profile-btn .user-profile-name {
+.admin-app .profile-btn .user-profile-name {
   font-size: 18px;
   text-transform: capitalize;
   display: none;
@@ -337,7 +326,7 @@ h6 {
 /* .profile-btn:hover .user-profile-name {
   display: inline;
 } */
-.user-profile-icon {
+.admin-app .user-profile-icon {
   padding: 10px;
   background-color: #f4f4f4;
   border-radius: 50%;
@@ -347,7 +336,7 @@ h6 {
   justify-content: center;
   align-items: center;
 }
-.profile-section-background {
+.admin-app .profile-section-background {
   display: none;
   width: 100%;
   height: 100%;
@@ -359,7 +348,7 @@ h6 {
   left: 0;
   background: #00000021;
 }
-.profile-section {
+.admin-app .profile-section {
   position: relative;
   left: 50%;
   top: 50%;
@@ -370,26 +359,26 @@ h6 {
   width: 250px;
   transform: translate(-50%, -50%);
 }
-.profile-section .close {
+.admin-app .profile-section .close {
   position: absolute;
   top: 10px;
   right: 10px;
   width: auto;
   cursor: pointer;
 }
-.profile-section hr {
+.admin-app .profile-section hr {
   border-color: var(--gray-color);
 }
-.profile-section .profile-pic-section {
+.admin-app .profile-section .profile-pic-section {
   margin-bottom: 20px;
   text-align: center;
 }
 
-.profile-open {
+.admin-app .profile-open {
   display: block;
 }
 
-.user-profile-info {
+.admin-app .user-profile-info {
   text-align: center;
   margin-bottom: 20px;
 }
@@ -406,7 +395,7 @@ span {
   color: var(--light-text);
 } */
 
-.form-control {
+.admin-app .form-control {
   display: block;
   width: 100%;
   height: 34px;
@@ -432,7 +421,7 @@ span {
     -webkit-box-shadow ease-in-out 0.15s;
 }
 
-.action_btn {
+.admin-app .action_btn {
   background: none;
   border: none;
   padding: 0;
@@ -441,13 +430,13 @@ span {
   align-items: center;
   justify-content: center;
 }
-.table_btns {
+.admin-app .table_btns {
   display: flex;
   /* justify-content: center; */
   align-items: center;
 }
 /* CollapsibleComponent.css */
-.card-collapse-head {
+.admin-app .card-collapse-head {
   display: flex;
   width: 100%;
   justify-content: space-between;

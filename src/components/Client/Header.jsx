@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Search from "../icons/Search";
-import Logo from "../icons/logo.svg";
+import Search from "../../icons/Search";
+import Logo from "../../icons/logo.svg";
 import { Link } from "react-router-dom";
+import CartIcon from "../../assets/images/icons/svg/CartIcon";
 const Header = ({ isStickyHeader }) => {
   const [isSticky, setIsSticky] = useState();
 
@@ -31,58 +32,64 @@ const Header = ({ isStickyHeader }) => {
           <Link to="/" className="navbar-brand">
             <img className="img-fluid logo-image" src={Logo} alt="Logo" />
           </Link>
-          <button
-            type="button"
-            className="navbar-toggler ms-auto me-0 w-auto"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarCollapse"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
+          <div>
+            <button
+              type="button"
+              className="navbar-toggler ms-auto me-2 w-auto border-0"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse"
+            >
+              <CartIcon height="1.5rem" fill="#000" />
+            </button>
+            <button
+              type="button"
+              className="navbar-toggler ms-auto me-0 w-auto  border-0"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+          </div>
           <div className="collapse navbar-collapse" id="navbarCollapse">
             <div className="navbar-nav ms-auto">
               <a href="index.html" className="nav-item nav-link active">
                 Home
               </a>
-              <a href="about.html" className="nav-item nav-link">
-                About
-              </a>
-              <a href="product.html" className="nav-item nav-link">
-                Products
-              </a>
-              <a href="store.html" className="nav-item nav-link">
-                Store
-              </a>
               <div className="nav-item dropdown">
-                <a
+                <Link
                   href="#"
                   className="nav-link dropdown-toggle"
                   data-bs-toggle="dropdown"
                 >
                   Pages
-                </a>
+                </Link>
                 <div className="dropdown-menu bg-light rounded-0 m-0">
-                  <a href="feature.html" className="dropdown-item">
+                  <Link to="feature.html" className="dropdown-item">
                     Features
-                  </a>
-                  <a href="blog.html" className="dropdown-item">
+                  </Link>
+                  <Link href="blog.html" className="dropdown-item">
                     Blog Article
-                  </a>
-                  <a href="testimonial.html" className="dropdown-item">
+                  </Link>
+                  <Link href="testimonial.html" className="dropdown-item">
                     Testimonial
-                  </a>
-                  <a href="404.html" className="dropdown-item">
+                  </Link>
+                  <Link href="404.html" className="dropdown-item">
                     404 Page
-                  </a>
+                  </Link>
                 </div>
               </div>
-              <a href="contact.html" className="nav-item nav-link">
+              <Link to="/contact" className="nav-item nav-link">
                 Contact
-              </a>
+              </Link>
             </div>
-            <div className="border-start ps-4 d-none d-lg-block">
-              <button type="button" className="btn btn-sm p-0">
+            <div className="border-start px-2 d-none d-lg-block">
+              <button type="button" className="btn btn-sm p-0 mx-2">
                 <Search />
+              </button>
+            </div>
+            <div className="border-start px-2 d-none d-lg-block">
+              <button type="button" className="btn btn-sm p-0 mx-2">
+                <CartIcon height="1rem" fill="#000" />
               </button>
             </div>
           </div>

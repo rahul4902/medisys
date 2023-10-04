@@ -1,5 +1,5 @@
-import CheckCircle from "../icons/CheckCircle";
-import CounterAnimation from "./CounterAnimation";
+import CheckCircle from "../../icons/CheckCircle";
+import CounterAnimation from "../Client/CounterAnimation";
 
 const PopularPackages = () => {
   const featersList = [
@@ -38,7 +38,7 @@ const PopularPackages = () => {
 
         {[1, 2, 4].map((_v, _x) => {
           return (
-            <div className="col-md-4 col-sm-6 col-xs-12" key={_x}>
+            <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12" key={_x}>
               <div className="dealwrapper primary">
                 <div className="body">
                   <h4 className="heading-2">Smart Health Full Body Checkup</h4>

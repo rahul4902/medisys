@@ -1,4 +1,4 @@
-import { Link, NavLink, useMatch } from "react-router-dom";
+import { Link, useMatch } from "react-router-dom";
 import HomeIcon from "../../icons/HomeIcon";
 import VialIcon from "../../icons/VialIcon";
 import UserIcons from "../../icons/UserIcons";
@@ -48,15 +48,6 @@ const SideBar = ({ isOpen, onSidebarToggle }) => {
             ))}
           </ul>
         )}
-      </li>
-    );
-  }
-
-  function NavItem({ to, label }) {
-    const match = useMatch(to);
-    return (
-      <li className={match && match.pathname != "/admin" ? "active" : ""}>
-        <Link to={to}>{label}</Link>
       </li>
     );
   }

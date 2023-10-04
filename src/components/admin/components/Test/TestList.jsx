@@ -1,22 +1,21 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { handleApiResponse } from "../../../../helper/apiHelpers";
-import { toast } from "react-toastify";
 
 import DynamicMuiTable from "../DynamicMuiTable";
 import { Link } from "react-router-dom";
 
 function TestList() {
-  const [formData, setFormData] = useState({
-    name: "",
-    status: "",
-  });
-  const [errors, setErrors] = useState({
+  // const [formData, setFormData] = useState({
+  //   name: "",
+  //   status: "",
+  // });
+  const [setErrors] = useState({
     name: "",
     status: "",
   });
   const [testData, setTestData] = useState([]);
-  const [isEditFrom, setIsEditForm] = useState(false);
+  const [setIsEditForm] = useState(false);
   const [userId, setUserId] = useState(null);
 
   useEffect(() => {
@@ -45,57 +44,58 @@ function TestList() {
     }
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     [name]: value,
+  //   }));
+  // };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setErrors(null);
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setErrors(null);
 
-    try {
-      var editUrl;
-      var method;
-      if (isEditFrom) {
-        editUrl = "http://localhost:5000/admin/test/update/" + userId;
-        method = "put";
-      } else {
-        editUrl = "http://localhost:5000/admin/test/create";
-        method = "post";
-      }
+  //   try {
+  //     var editUrl;
+  //     var method;
+  //     if (isEditFrom) {
+  //       editUrl = "http://localhost:5000/admin/test/update/" + userId;
+  //       method = "put";
+  //     } else {
+  //       editUrl = "http://localhost:5000/admin/test/create";
+  //       method = "post";
+  //     }
 
-      // const response = await axios.post(editUrl, formData);
-      const response = await axios({
-        method: method,
-        url: editUrl,
-        data: formData,
-      });
+  //     // const response = await axios.post(editUrl, formData);
+  //     const response = await axios({
+  //       method: method,
+  //       url: editUrl,
+  //       data: formData,
+  //     });
 
-      handleApiResponse(
-        response,
-        (data) => {
-          setFormData({
-            name: "",
-            status: "",
-          });
-          getTestList();
-          setIsEditForm(false);
-        },
-        (errors) => {
-          console.log("errors", errors);
-        },
-        setErrors
-      );
-    } catch (error) {
-      toast.error("Something went wrong.");
-    } finally {
-      // setLoading(false);
-    }
-  };
+  //     handleApiResponse(
+  //       response,
+  //       (data) => {
+  //         setFormData({
+  //           name: "",
+  //           status: "",
+  //         });
+  //         getTestList();
+  //         setIsEditForm(false);
+  //       },
+  //       (errors) => {
+  //         console.log("errors", errors);
+  //       },
+  //       setErrors
+  //     );
+  //   } catch (error) {
+  //     toast.error("Something went wrong.");
+  //   } finally {
+  //     // setLoading(false);
+  //   }
+  // };
+
   var columns = [
     { name: "name", label: "Name" },
     { name: "sort_name", label: "Sort Name" },
@@ -125,11 +125,17 @@ function TestList() {
     <div className="row">
       <div className="col-md-12 text-end">
         <div className="col-md-12 col-sm-12 col-12 mb-2">
-          <button type="button" className="btn btn-outline-secondary me-2">
+          <button
+            type="button"
+            className="btn btn-outline-secondary btn-sm common-btn me-2"
+          >
             Trash
           </button>
           <Link to="/admin/diagnostic/test/create">
-            <button type="button" className="btn btn-outline-secondary me-2">
+            <button
+              type="button"
+              className="btn btn-outline-secondary btn-sm common-btn me-2"
+            >
               Create
             </button>
           </Link>

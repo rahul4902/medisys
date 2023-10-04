@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import MUIDataTable from "mui-datatables";
+import MUIDataTable from "mui-datatables";
 import EditIcon from "../../../assets/images/icons/svg/EditIcon";
 import DeleteIcon from "../../../assets/images/icons/svg/DeleteIcon";
 import CheckIcon from "../../../assets/images/icons/svg/CheckIcon";
@@ -192,12 +192,12 @@ const DynamicMuiTable = ({
       )}
 
       <div className="miuiTable">
-        {/* <MUIDataTable
+        <MUIDataTable
           title={title}
           data={data}
           columns={columArray}
           options={options}
-        /> */}
+        />
       </div>
     </>
   );

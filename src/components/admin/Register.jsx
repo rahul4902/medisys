@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import "../../assets/css/auth.css";
-import "../../assets/css/common.css";
-import "../../assets/css/login.scss";
 import LoginSlider from "./components/LoginSlider";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -9,12 +6,12 @@ import { toast } from "react-toastify";
 import { handleApiResponse } from "../../helper/apiHelpers";
 
 function Register() {
+  const [loaderBtn, setLoaderBtn] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
     name: "",
   });
-  const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({
     email: "",
     name: "",
@@ -32,9 +29,8 @@ function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
     setErrors(null);
-
+    setLoaderBtn(true);
     try {
       const response = await axios.post(
         "http://localhost:5000/user/register",
@@ -52,7 +48,7 @@ function Register() {
       console.log(error);
       toast.error("User Registration Failed.");
     } finally {
-      setLoading(false);
+      setLoaderBtn(false);
     }
   };
 
@@ -70,18 +66,11 @@ function Register() {
               <form onSubmit={handleSubmit}>
                 <div className="form-group">
                   <div className="mb-3">
-                    <label
-                      id="name_label"
-                      for="name"
-                      className="animated-label"
-                    >
-                      Full Name
-                    </label>
                     <input
                       id="name"
                       name="name"
                       type="text"
-                      className={`form-control  ${
+                      className={`form-control ic ${
                         errors?.name ? "is-invalid" : ""
                       }`}
                       value={formData.name}
@@ -94,14 +83,11 @@ function Register() {
                     )}
                   </div>
                   <div className="mb-3">
-                    <label id="email_label" for="email">
-                      Email Address
-                    </label>
                     <input
                       id="email"
                       name="email"
                       type="email"
-                      className={`form-control  ${
+                      className={`form-control  ic ${
                         errors?.email ? "is-invalid" : ""
                       }`}
                       value={formData.email}
@@ -114,14 +100,11 @@ function Register() {
                     )}
                   </div>
                   <div className="mb-3">
-                    <label id="password_label" for="password">
-                      Password
-                    </label>
                     <input
                       id="password"
                       name="password"
                       type="password"
-                      className={`form-control  ${
+                      className={`form-control ic ${
                         errors?.password ? "is-invalid" : ""
                       }`}
                       value={formData.password}
@@ -138,10 +121,18 @@ function Register() {
                     <button
                       type="submit"
                       name="submit"
-                      className="btn2-primary"
-                      disabled={loading}
+                      className="btn btn-success common-btn"
+                      disabled={loaderBtn}
                     >
-                      {loading ? "Signing up..." : "Sign Up"}
+                      {loaderBtn && (
+                        <div
+                          class="spinner-border spinner-border-sm me-2"
+                          role="status"
+                        >
+                          <span class="sr-only"></span>
+                        </div>
+                      )}{" "}
+                      Submit
                     </button>
                   </div>
                 </div>

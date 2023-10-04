@@ -1,17 +1,17 @@
 import React, { Suspense } from "react";
-import Loader from "../icons/Loader";
-import patientIcon from "../assets/images/icons/patient.png";
-import oc1 from "../assets/images/icons/oc1.svg";
-import oc2 from "../assets/images/icons/oc2.svg";
-import oc3 from "../assets/images/icons/oc3.svg";
-import oc4 from "../assets/images/icons/oc4.svg";
-import oc5 from "../assets/images/icons/oc5.svg";
-import oc6 from "../assets/images/icons/oc6.svg";
-import Checked from "../assets/images/icons/checked.png";
-import WallClock from "../assets/images/icons/wall-clock.png";
-import Shield from "../assets/images/icons/shield.png";
-import Mortarboard from "../assets/images/icons/mortarboard.png";
-import Care from "../assets/images/icons/care.png";
+import Loader from "../../icons/Loader";
+import patientIcon from "../../assets/images/icons/patient.png";
+import oc1 from "../../assets/images/icons/oc1.svg";
+import oc2 from "../../assets/images/icons/oc2.svg";
+import oc3 from "../../assets/images/icons/oc3.svg";
+import oc4 from "../../assets/images/icons/oc4.svg";
+import oc5 from "../../assets/images/icons/oc5.svg";
+import oc6 from "../../assets/images/icons/oc6.svg";
+import Checked from "../../assets/images/icons/checked.png";
+import WallClock from "../../assets/images/icons/wall-clock.png";
+import Shield from "../../assets/images/icons/shield.png";
+import Mortarboard from "../../assets/images/icons/mortarboard.png";
+import Care from "../../assets/images/icons/care.png";
 
 const iconMap = {
   "patient.png": patientIcon,

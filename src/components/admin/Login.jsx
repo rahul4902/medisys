@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import "../../assets/css/auth.css";
-import "../../assets/css/common.css";
-import "../../assets/css/login.scss";
 import LoginSlider from "./components/LoginSlider";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -9,11 +6,12 @@ import { handleApiResponse } from "../../helper/apiHelpers";
 import { toast } from "react-toastify";
 
 function Login() {
+  const [loaderBtn, setLoaderBtn] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  const [errors, setErrors] = useState({
+  const [setErrors] = useState({
     email: "",
     password: "",
   });
@@ -29,7 +27,11 @@ function Login() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrors(null);
+    setLoaderBtn(true);
+    setErrors({
+      email: "",
+      password: "",
+    });
 
     try {
       const response = await axios.post(
@@ -49,7 +51,7 @@ function Login() {
       console.log(error);
       toast.error("User Login Failed.");
     } finally {
-      // setLoading(false);
+      setLoaderBtn(false);
     }
   };
 
@@ -64,29 +66,24 @@ function Login() {
             <div className="p-4">
               <h4>Sign In</h4>
               <p>Login To Manage Your Account</p>
+              <hr />
               <form onSubmit={handleSubmit}>
                 <div className="form-group">
                   <div className="mb-3">
-                    <label id="email_label" for="email">
-                      Email Address
-                    </label>
                     <input
                       id="email"
                       name="email"
                       type="email"
-                      className="form-control"
+                      className="form-control ic"
                       onChange={handleChange}
                     />
                   </div>
                   <div className="mb-3">
-                    <label id="password_label" for="password">
-                      Password
-                    </label>
                     <input
                       id="password"
                       name="password"
                       type="password"
-                      className="form-control"
+                      className="form-control ic"
                       onChange={handleChange}
                     />
                   </div>
@@ -94,8 +91,17 @@ function Login() {
                     <button
                       type="submit"
                       name="submit"
-                      className="btn2-primary"
+                      className="btn btn-success common-btn"
+                      disabled={loaderBtn}
                     >
+                      {loaderBtn && (
+                        <div
+                          class="spinner-border spinner-border-sm me-2"
+                          role="status"
+                        >
+                          <span class="sr-only"></span>
+                        </div>
+                      )}
                       SignIn
                     </button>
                   </div>

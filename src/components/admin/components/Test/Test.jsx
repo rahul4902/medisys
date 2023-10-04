@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import PlusIcon from "../../../assets/images/icons/svg/PlusIcon";
-import SaveIcon from "../../../assets/images/icons/svg/SaveIcon";
 import axios from "axios";
-import { handleApiResponse } from "../../../helper/apiHelpers";
+import { handleApiResponse } from "../../../../helper/apiHelpers";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 
@@ -10,7 +8,7 @@ function Test() {
   const [departments, setDepartments] = useState([]);
   const [saveLoader, setSaveLoader] = useState(false);
   const [isEditFrom, setIsEditForm] = useState(false);
-  const [userId, setUserId] = useState(null);
+  const [userId] = useState(null);
   const [formData, setFormData] = useState({
     department: "",
     name: "",
@@ -180,15 +178,24 @@ function Test() {
     <form onSubmit={handleSubmit}>
       <div className="text-end">
         <div className="col-md-12 col-sm-12 col-12 mb-2">
-          <button type="button" className="btn btn-outline-secondary me-2">
+          <button
+            type="button"
+            className="btn btn-outline-secondary common-btn me-2"
+          >
             Trash
           </button>
           <Link to="/admin/diagnostic/test/">
-            <button type="button" className="btn btn-outline-secondary me-2">
+            <button
+              type="button"
+              className="btn btn-outline-secondary common-btn me-2"
+            >
               List
             </button>
           </Link>
-          <button type="submit" className="btn btn-outline-primary">
+          <button
+            type="submit"
+            className="btn btn-outline-secondary common-btn"
+          >
             {saveLoader && (
               <div
                 className="spinner-border spinner-border-sm me-1"
@@ -214,7 +221,7 @@ function Test() {
               <label>Department</label>
               <select
                 name="department"
-                className="form-control form-select-sm"
+                className="ic form-select"
                 value={formData.department}
                 onChange={handleChange}
               >
@@ -238,7 +245,7 @@ function Test() {
               <input
                 name="name"
                 type="text"
-                className="form-control"
+                className="ic"
                 value={formData.name}
                 onChange={handleChange}
               />
@@ -253,7 +260,7 @@ function Test() {
               <input
                 name="code"
                 type="text"
-                className="form-control"
+                className="ic"
                 value={formData.code}
                 onChange={handleChange}
               />
@@ -266,7 +273,7 @@ function Test() {
             <div className="col-md-4 col-sm-4 col-12 mb-2">
               <label className="labelForTag">Gender :</label>
               <select
-                className="form-control form-select"
+                className="ic form-select"
                 name="gender"
                 value={formData.gender}
                 onChange={handleChange}
@@ -285,7 +292,7 @@ function Test() {
             <div className="col-md-4 col-sm-4 col-12 mb-2">
               <label className="labelForTag2">Container Color Code :</label>
               <select
-                className="form-control"
+                className="ic form-select"
                 name="color_code"
                 value={formData.color_code}
                 onChange={handleChange}
@@ -310,7 +317,7 @@ function Test() {
             <div className="col-md-4 col-sm-4 col-12 mb-2">
               <label className="labelForTag">Type :</label>
               <select
-                className="form-control form-select"
+                className="ic form-select"
                 name="type"
                 value={formData.type}
                 onChange={handleChange}
@@ -331,7 +338,7 @@ function Test() {
               <input
                 name="sample_qty"
                 type="text"
-                className="form-control"
+                className="ic"
                 value={formData.sample_qty}
                 onChange={handleChange}
               />
@@ -346,7 +353,7 @@ function Test() {
               <input
                 name="remark"
                 type="text"
-                className="form-control"
+                className="ic"
                 value={formData.remark}
                 onChange={handleChange}
               />
@@ -359,7 +366,7 @@ function Test() {
             <div className="col-md-4 col-sm-4 col-12 mb-2">
               <label className="labelForTag">Report Type :</label>
               <select
-                className="form-control form-select"
+                className="ic form-select"
                 name="report_type"
                 value={formData.report_type}
                 onChange={handleChange}
@@ -380,7 +387,7 @@ function Test() {
               <input
                 name="sort_name"
                 type="text"
-                className="form-control"
+                className="ic"
                 value={formData.sort_name}
                 onChange={handleChange}
               />
@@ -395,7 +402,7 @@ function Test() {
               <input
                 name="mrp"
                 type="text"
-                className="form-control"
+                className="ic"
                 value={formData.mrp}
                 onChange={handleChange}
               />
@@ -410,7 +417,7 @@ function Test() {
               <input
                 name="rate"
                 type="text"
-                className="form-control"
+                className="ic"
                 value={formData.rate}
                 onChange={handleChange}
               />
@@ -423,7 +430,7 @@ function Test() {
             <div className="col-md-4 col-sm-4 col-12 mb-2">
               <label className="labelForTag">AutoConsume :</label>
               <select
-                className="form-control form-select"
+                className="ic form-select"
                 name="auto_consume"
                 value={formData.auto_consume}
                 onChange={handleChange}
@@ -442,7 +449,7 @@ function Test() {
             <div className="col-md-4 col-sm-4 col-12 mb-2">
               <label className="labelForTag">Concent Form: </label>
               <select
-                className="form-control form-select"
+                className="ic form-select"
                 name="concent_form"
                 value={formData.concent_form}
                 onChange={handleChange}
@@ -464,7 +471,7 @@ function Test() {
             <div className="col-md-4 col-sm-4 col-12 mb-2">
               <label className="labelForTag">Billing Category: </label>
               <select
-                className="form-control form-select"
+                className="ic form-select"
                 name="billing_category"
                 value={formData.billing_category}
                 onChange={handleChange}
@@ -484,7 +491,7 @@ function Test() {
               <input
                 name="max_discount"
                 type="text"
-                className="form-control"
+                className="ic"
                 value={formData.max_discount}
                 onChange={handleChange}
               />

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Location from "../icons/Location";
+import Location from "../../icons/Location";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";

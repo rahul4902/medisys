@@ -1,10 +1,10 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { handleApiResponse } from "../../../helper/apiHelpers";
-import { Navigate } from "react-router-dom";
+import { handleApiResponse } from "../../../../helper/apiHelpers";
+import MUIDataTable from "mui-datatables";
 import { toast } from "react-toastify";
 
-import DynamicMuiTable from "./DynamicMuiTable";
+import DynamicMuiTable from "../DynamicMuiTable";
 
 function Department() {
   const [formData, setFormData] = useState({
@@ -23,6 +23,9 @@ function Department() {
     getDepartmentList();
   }, []);
 
+  const options = {
+    responsive: "stacked",
+  };
   const getDepartmentList = async () => {
     try {
       const response = await axios({
@@ -118,7 +121,7 @@ function Department() {
       },
     },
   ];
-  
+
   return (
     <div className="row">
       <div className="col-lg-8 col-md-8 col-sm-12 col-12">
@@ -135,12 +138,6 @@ function Department() {
           userId={userId}
           setUserId={setUserId}
         />
-        {/* <MUIDataTable
-          title={"Department List"}
-          data={departmentData}
-          columns={columns}
-          options={options}
-        /> */}
       </div>
       <div className="col-lg-4 col-md-4 col-sm-12 col-12">
         <div className="card">
@@ -174,7 +171,7 @@ function Department() {
                   type="text"
                   name="name"
                   id="name"
-                  className="form-control"
+                  className="w-100 ic"
                   value={formData.name}
                   onChange={handleChange}
                 />
@@ -189,7 +186,7 @@ function Department() {
                 <select
                   name="status"
                   id="status"
-                  className="form-control form-select"
+                  className=" form-select  ic"
                   value={formData.status}
                   onChange={handleChange}
                 >

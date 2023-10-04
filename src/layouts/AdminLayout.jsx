@@ -5,13 +5,11 @@ import NavBar from "../components/admin/NavBar";
 import SideBar from "../components/admin/SideBar";
 import { Routes, Route } from "react-router-dom";
 import Dashboard from "../components/admin/Dashboard";
-import { toast } from "react-toastify";
-import Test from "../components/admin/components/Test";
-import Department from "../components/admin/components/Department";
+import Test from "../components/admin/components/Test/Test";
+import Department from "../components/admin/components/department/Department";
 import TestList from "../components/admin/components/Test/TestList";
 
 const AdminLayout = (props) => {
-  const { children } = props;
   const [sidebarOpen, setSidebarOpen] = useState(true);
   useEffect(() => {
     const storedSidebarState = localStorage.getItem("sidebarState");
@@ -25,11 +23,11 @@ const AdminLayout = (props) => {
     localStorage.setItem("sidebarState", !sidebarOpen ? "open" : "closed");
   };
 
-  const showErrorToast = () => {
-    toast.error("This is an error message", {
-      position: toast.POSITION.TOP_CENTER,
-    });
-  };
+  // const showErrorToast = () => {
+  //   toast.error("This is an error message", {
+  //     position: toast.POSITION.TOP_CENTER,
+  //   });
+  // };
   return (
     <div className="admin-app">
       <SideBar isOpen={sidebarOpen} />
