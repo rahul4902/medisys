@@ -40,6 +40,13 @@ a {
   border-radius: 25px;
 }
 
+.App .ic {
+  height: 45px;
+  border-radius: 25px;
+  border: 1px solid whitesmoke;
+  padding: 10px 20px;
+}
+
 .App .common-btn {
   padding: 10px 15px;
   border-radius: 50px;

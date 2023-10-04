@@ -20,12 +20,33 @@ const QueryFormPopup = () => {
                       <img src={QueryImg} alt="query-img" srcset={QueryImg} />
                     </div>
                     <div className="col-md-7 d-flex align-items-center">
-                      <div className="row">
-                        <div className="col-md-12">
-                          <input type="text" className="form-control" />
+                      <div className="row gap-1 text-center">
+                        <div className="col-md-12 mb-2">
+                          <input
+                            type="text"
+                            className="form-control ic"
+                            placeholder="Enter Name"
+                          />
                         </div>
-                        <div className="col-md-12">
-                          <select name="input_12" className="form-control">
+                        <div className="col-md-12 mb-2">
+                          <input
+                            type="email"
+                            className="form-control ic"
+                            placeholder="Enter Email-Id"
+                          />
+                        </div>
+                        <div className="col-md-12 mb-2">
+                          <input
+                            type="text"
+                            className="form-control ic"
+                            placeholder="Enter Mobile"
+                          />
+                        </div>
+                        <div className="col-md-12  mb-2">
+                          <select
+                            name="input_12"
+                            className="form-control ic form-select"
+                          >
                             <option>Select City</option>
                             <option value="Agartala">Agartala</option>
                             <option value="Agra">Agra</option>
@@ -130,7 +151,7 @@ const QueryFormPopup = () => {
                             <option value="Yamuna Nagar">Yamuna Nagar</option>
                           </select>
                         </div>
-                        <div className="col-md-12">
+                        <div className="col-md-12 mb-2">
                           <button
                             type="button"
                             className="btn btn-success common-btn"
