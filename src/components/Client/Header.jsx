@@ -52,10 +52,16 @@ const Header = ({ isStickyHeader }) => {
           </div>
           <div className="collapse navbar-collapse" id="navbarCollapse">
             <div className="navbar-nav ms-auto">
-              <a href="index.html" className="nav-item nav-link active">
+              <Link to="/" className="nav-item nav-link">
                 Home
-              </a>
-              <div className="nav-item dropdown">
+              </Link>
+              <Link to="/about" className="nav-item nav-link">
+                About
+              </Link>
+              <Link to="/contact" className="nav-item nav-link">
+                Contact
+              </Link>
+              {/* <div className="nav-item dropdown">
                 <Link
                   href="#"
                   className="nav-link dropdown-toggle"
@@ -80,7 +86,7 @@ const Header = ({ isStickyHeader }) => {
               </div>
               <Link to="/contact" className="nav-item nav-link">
                 Contact
-              </Link>
+              </Link> */}
             </div>
             <div className="border-start px-2 d-none d-lg-block">
               <button type="button" className="btn btn-sm p-0 mx-2">

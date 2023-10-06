@@ -26,6 +26,12 @@ a {
   text-decoration: none !important;
 }
 
+.p-30 {
+  padding: 30px;
+}
+.br-20 {
+  border-radius: 20px;
+}
 .input-group {
   flex-wrap: nowrap !important;
 }
@@ -46,8 +52,16 @@ a {
   border: 1px solid whitesmoke !important;
   padding: 10px 20px !important;
   width: 100%;
+  background-color: whitesmoke;
 }
 
+.App .ic-t {
+  border-radius: 25px !important;
+  border: 1px solid whitesmoke !important;
+  padding: 10px 20px !important;
+  width: 100%;
+  background-color: whitesmoke;
+}
 .admin-app .ic {
   height: 40px;
   border-radius: 25px !important;
@@ -1056,4 +1070,22 @@ a {
 }
 .carousel-slider {
   height: 100% !important;
+}
+
+.App .about-card {
+  background-color: hsl(120, 60%, 30%, 0.2);
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.App .about-card .about-img {
+  width: 100%;
+}
+
+.App .about-card .about-text {
+  text-align: justify;
+}
+.App .team .team-image {
+  border-radius: 20px;
+  width: -webkit-fill-available;
 }

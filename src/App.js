@@ -20,6 +20,8 @@ import WhatsAppIcon from "./components/Client/WhatsAppIcon";
 import Footer from "./components/Client/Footer";
 import SearchResults from "./components/Client/SearchResults";
 import QueryFormPopup from "./components/Client/QueryFormPopup";
+import About from "./components/Client/About";
+import Contact from "./components/Client/Contact";
 function App() {
   useEffect(() => {
     window.addEventListener("beforeinstallprompt", (event) => {
@@ -36,6 +38,8 @@ function App() {
 
   const routeArray = [
     { path: "/", isStickyHeader: true, component: <Home /> },
+    { path: "/about", isStickyHeader: false, component: <About /> },
+    { path: "/contact", isStickyHeader: false, component: <Contact /> },
     {
       path: "/search/details/:id",
       isStickyHeader: false,
