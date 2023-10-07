@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Facebook from "../../icons/Facebook";
 import Twitter from "../../icons/Twitter";
 import Youtube from "../../icons/Youtube";
+import AngleIcon from "../../assets/images/icons/svg/AngleIcon";
 
 const Footer = () => {
   return (
@@ -27,19 +28,19 @@ const Footer = () => {
             <div className="d-flex pt-3">
               <Link
                 to="/"
-                className="btn btn-square btn-success rounded-circle me-2"
+                className="btn btn-square btn-success rounded-circle me-2 social-icons"
                 aria-label="Twitter"
               >
                 <Twitter />
               </Link>
               <Link
-                className="btn btn-square btn-success rounded-circle me-2"
+                className="btn btn-square btn-success rounded-circle me-2 social-icons"
                 aria-label="FaceBook"
               >
                 <Facebook />
               </Link>
               <Link
-                className="btn btn-square btn-success rounded-circle me-2"
+                className="btn btn-square btn-success rounded-circle me-2 social-icons"
                 aria-label="Youtube"
               >
                 <Youtube />
@@ -47,12 +48,22 @@ const Footer = () => {
             </div>
           </div>
           <div className="col-lg-3 col-md-6">
-            <h4 className=" mb-4">Quick Links</h4>`{" "}
-            <Link className="btn btn-link">About Us</Link>
-            <Link className="btn btn-link">Contact Us</Link>
-            <Link className="btn btn-link">Our Services</Link>
-            <Link className="btn btn-link">Terms & Condition</Link>
-            <Link className="btn btn-link">Support</Link>
+            <h4 className=" mb-4">Quick Links</h4>
+            <Link to="/about" className="btn btn-link">
+              <AngleIcon /> About Us
+            </Link>
+            <Link to="/contact" className="btn btn-link">
+              <AngleIcon /> Contact Us
+            </Link>
+            <Link className="btn btn-link">
+              <AngleIcon /> Our Services
+            </Link>
+            <Link className="btn btn-link">
+              <AngleIcon /> Terms & Condition
+            </Link>
+            <Link className="btn btn-link">
+              <AngleIcon /> Support
+            </Link>
           </div>
           <div className="col-lg-3 col-md-6">
             <h4 className=" mb-4">Business Hours</h4>
