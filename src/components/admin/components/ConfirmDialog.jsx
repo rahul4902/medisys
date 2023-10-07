@@ -10,7 +10,7 @@ const ConfirmDialog = ({ message, onCancel, onConfirm }) => {
             <button onClick={onCancel} className="btn btn-sm btn-secondary">
               Cancel
             </button>
-            <button onClick={onConfirm} className="btn btn-sm btn-primary">
+            <button onClick={onConfirm} className="btn btn-sm btn-success">
               Confirm
             </button>
           </div>

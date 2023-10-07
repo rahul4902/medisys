@@ -5,7 +5,7 @@ import PaperClip from "../../assets/images/icons/svg/PaperClip";
 const Contact = () => {
   return (
     <div className="container my-5">
-      <div className="shadow p-30 br-20 bg-white">
+      <div className="contact shadow p-30 br-20 bg-white">
         <div className="row">
           <div className="col-md-7">
             <div className="d-flex justify-content-center align-items-center h-100">

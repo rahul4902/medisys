@@ -27,14 +27,21 @@ const Footer = () => {
             <div className="d-flex pt-3">
               <Link
                 to="/"
-                className="btn btn-square btn-primary rounded-circle me-2"
+                className="btn btn-square btn-success rounded-circle me-2"
+                aria-label="Twitter"
               >
                 <Twitter />
               </Link>
-              <Link className="btn btn-square btn-primary rounded-circle me-2">
+              <Link
+                className="btn btn-square btn-success rounded-circle me-2"
+                aria-label="FaceBook"
+              >
                 <Facebook />
               </Link>
-              <Link className="btn btn-square btn-primary rounded-circle me-2">
+              <Link
+                className="btn btn-square btn-success rounded-circle me-2"
+                aria-label="Youtube"
+              >
                 <Youtube />
               </Link>
             </div>
@@ -50,11 +57,11 @@ const Footer = () => {
           <div className="col-lg-3 col-md-6">
             <h4 className=" mb-4">Business Hours</h4>
             <p className="mb-1">Monday - Friday</p>
-            <h6 className="text-light">09:00 am - 07:00 pm</h6>
+            <span className="text-light fw-bold">09:00 am - 07:00 pm</span>
             <p className="mb-1">Saturday</p>
-            <h6 className="text-light">09:00 am - 12:00 pm</h6>
+            <span className="text-light fw-bold">09:00 am - 12:00 pm</span>
             <p className="mb-1">Sunday</p>
-            <h6 className="text-light">Closed</h6>
+            <span className="text-light fw-bold">Closed</span>
           </div>
           <div className="col-lg-3 col-md-6">
             <h4 className=" mb-4">Newsletter</h4>

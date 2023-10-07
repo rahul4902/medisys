@@ -5,7 +5,7 @@
 
 /********** Template CSS **********/
 :root {
-  --primary: #5050ce;
+  --primary: #198754;
   --success: hsl(120, 60%, 30%);
   --danger: hsl(0deg 59.48% 30%);
   --info: hsl(0deg 59.48% 30%);
@@ -37,7 +37,7 @@ a {
 }
 
 .btn2-primary {
-  background-color: #5050ce;
+  background-color: #198754;
   min-width: 200px;
   width: max-content;
   color: #fff;
@@ -210,42 +210,6 @@ a {
   margin-left: 8px;
 } */
 
-@media (max-width: 991.98px) {
-  /* .navbar .navbar-brand {
-    width: 126px;
-    height: 100px;
-  } */
-
-  .navbar .navbar-nav .nav-link {
-    margin-right: 0;
-    padding: 10px 0;
-  }
-
-  .navbar .navbar-nav {
-    margin-top: 75px;
-    border-top: 1px solid #eeeeee;
-  }
-}
-
-@media (min-width: 992px) {
-  .navbar .nav-item .dropdown-menu {
-    display: block;
-    border: none;
-    margin-top: 0;
-    top: 150%;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.5s;
-  }
-
-  .navbar .nav-item:hover .dropdown-menu {
-    top: 100%;
-    visibility: visible;
-    transition: 0.5s;
-    opacity: 1;
-  }
-}
-
 .App .banner-image {
   width: 100vw;
   /* filter: hue-rotate(198deg); */
@@ -253,7 +217,8 @@ a {
 
 .image-container {
   position: relative;
-  display: inline-block; /* Adjust display property as needed */
+  display: inline-block;
+  overflow: hidden;
 }
 
 .banner-image {
@@ -434,7 +399,7 @@ a {
 }
 
 .dealwrapper.primary .ribbon-tag {
-  background: #5050ce;
+  background: #198754;
 }
 
 .dealwrapper.primary {
@@ -586,6 +551,7 @@ a {
 .our-commit-img {
   width: 100%;
   height: 200px;
+  filter: hue-rotate(297deg);
 }
 
 .our-commit:hover {
@@ -638,11 +604,20 @@ a {
   padding: 5px 10px;
   height: 50px;
   width: 100%;
-  color: #919191;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+  /* color: #919191; */
+  color: #000;
   text-indent: 1px;
   text-overflow: "";
+  background-color: rgba(245, 245, 245, 0.293);
+}
+
+.search-form input::placeholder {
+  color: gray;
+  opacity: 1;
+}
+
+.search-form input::-ms-input-placeholder {
+  color: gray;
 }
 .no-focus-outline:focus {
   outline: none;
@@ -1088,4 +1063,73 @@ a {
 .App .team .team-image {
   border-radius: 20px;
   width: -webkit-fill-available;
+}
+
+.carousel .slide img {
+  width: 100%;
+  vertical-align: top;
+  border: 0;
+  height: 70vh;
+}
+
+.contact img {
+  filter: hue-rotate(297deg);
+}
+.home-banner {
+  display: block;
+}
+.home-image {
+  display: none;
+}
+@media (max-width: 991.98px) {
+  /* .navbar .navbar-brand {
+    width: 126px;
+    height: 100px;
+  } */
+
+  .navbar .navbar-nav .nav-link {
+    margin-right: 0;
+    padding: 10px 0;
+  }
+
+  .navbar .navbar-nav {
+    margin-top: 75px;
+    border-top: 1px solid #eeeeee;
+  }
+  .slider-section {
+    height: 30vh;
+  }
+
+  .carousel .slide {
+    height: 30vh !important;
+  }
+  .carousel .slide img {
+    height: 30vh;
+  }
+
+  .home-banner {
+    display: none;
+  }
+  .home-image {
+    display: block;
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar .nav-item .dropdown-menu {
+    display: block;
+    border: none;
+    margin-top: 0;
+    top: 150%;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+  }
+
+  .navbar .nav-item:hover .dropdown-menu {
+    top: 100%;
+    visibility: visible;
+    transition: 0.5s;
+    opacity: 1;
+  }
 }

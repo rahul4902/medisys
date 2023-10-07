@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, Suspense } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -8,20 +8,27 @@ import {
 import { useEffect } from "react";
 import "./assets/css/style.css";
 import "./assets/css/admin.css";
-import AdminLayout from "./layouts/AdminLayout";
-import Home from "./components/Client/Home";
-import AdminLogin from "./components/admin/Login";
-import AdminRegister from "./components/admin/Register";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PrivateAdminRoute from "./helper/PrivateAdminRoute";
+
 import Header from "./components/Client/Header";
-import WhatsAppIcon from "./components/Client/WhatsAppIcon";
-import Footer from "./components/Client/Footer";
-import SearchResults from "./components/Client/SearchResults";
-import QueryFormPopup from "./components/Client/QueryFormPopup";
-import About from "./components/Client/About";
-import Contact from "./components/Client/Contact";
+// import QueryFormPopup from "./components/Client/QueryFormPopup";
+
+const AdminLayout = React.lazy(() => import("./layouts/AdminLayout"));
+const Home = React.lazy(() => import("./components/Client/Home"));
+const AdminLogin = React.lazy(() => import("./components/admin/Login"));
+const AdminRegister = React.lazy(() => import("./components/admin/Register"));
+const WhatsAppIcon = React.lazy(() =>
+  import("./components/Client/WhatsAppIcon")
+);
+const Footer = React.lazy(() => import("./components/Client/Footer"));
+const SearchResults = React.lazy(() =>
+  import("./components/Client/SearchResults")
+);
+const About = React.lazy(() => import("./components/Client/About"));
+const Contact = React.lazy(() => import("./components/Client/Contact"));
+
 function App() {
   useEffect(() => {
     window.addEventListener("beforeinstallprompt", (event) => {
@@ -35,7 +42,9 @@ function App() {
   //     position: toast.POSITION.TOP_CENTER,
   //   });
   // };
-
+  const LoadingSpinner = () => {
+    return <>Loading....</>;
+  };
   const routeArray = [
     { path: "/", isStickyHeader: true, component: <Home /> },
     { path: "/about", isStickyHeader: false, component: <About /> },
@@ -75,10 +84,12 @@ function App() {
                 element={
                   <div className="App">
                     <Header isStickyHeader={linkItem.isStickyHeader} />
-                    {linkItem.component}
+                    <Suspense fallback={<LoadingSpinner />}>
+                      {linkItem.component}
+                    </Suspense>
                     <WhatsAppIcon />
                     <Footer />
-                    <QueryFormPopup />
+                    {/* <QueryFormPopup /> */}
                   </div>
                 }
               />

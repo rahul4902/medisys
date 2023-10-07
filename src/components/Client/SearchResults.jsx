@@ -30,9 +30,7 @@ const SearchResults = () => {
               </svg>
               850
             </h2>
-            <button className="btn btn-primary border-primary">
-              Add To Cart
-            </button>
+            <button className="btn btn-success common-btn">Add To Cart</button>
           </div>
         </div>
       </div>

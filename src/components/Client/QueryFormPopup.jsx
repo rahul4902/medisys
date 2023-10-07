@@ -17,7 +17,7 @@ const QueryFormPopup = () => {
                 <form method="post">
                   <div className="row">
                     <div className="col-md-5">
-                      <img src={QueryImg} alt="query-img" srcset={QueryImg} />
+                      <img src={QueryImg} alt="query-img" />
                     </div>
                     <div className="col-md-7 d-flex align-items-center">
                       <div className="row gap-1 text-center">
@@ -46,6 +46,7 @@ const QueryFormPopup = () => {
                           <select
                             name="input_12"
                             className="form-control ic form-select"
+                            aria-label="City"
                           >
                             <option>Select City</option>
                             <option value="Agartala">Agartala</option>
@@ -151,12 +152,12 @@ const QueryFormPopup = () => {
                             <option value="Yamuna Nagar">Yamuna Nagar</option>
                           </select>
                         </div>
-                        <div className="col-md-12 mb-2">
+                        <div className="col-md-12 mb-2 d-flex align-itmes-center">
                           <button
                             type="button"
                             className="btn btn-success common-btn"
                           >
-                            Request Home Visit
+                            Request Visit
                           </button>
                         </div>
                       </div>

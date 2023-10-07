@@ -51,18 +51,17 @@ const SearchForm = () => {
                   <div className="input-group auto-complete-section">
                     <select
                       className="form-select"
-                      id="inputGroupSelect04"
-                      aria-label="Example select with button addon"
                       name="type"
                       value=""
                       onChange={typeChangeHandler}
+                      aria-label="Location"
                     >
                       <option value="">All</option>
                       <option value="test">Tests</option>
                       <option value="package">Package</option>
                     </select>
 
-                    <div className="autocomplete-search">
+                    <div>
                       <input
                         type="text"
                         value={query}
@@ -110,6 +109,7 @@ const SearchForm = () => {
                       className="select-input no-focus-outline location-input"
                       value="1"
                       onChange={locationChangeHandler}
+                      aria-label="Location Search"
                     >
                       <option value={1}>Greater Noida</option>
                     </select>

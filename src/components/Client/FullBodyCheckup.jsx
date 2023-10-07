@@ -10,12 +10,15 @@ const FullBodyCheckup = () => {
               <span className="line"></span>
               <span className="subtitle-text">Our Services</span>
             </h5>
-            <h4 className="title">Services We Offer</h4>
+            <span className="title">Services We Offer</span>
           </div>
         </div>
-        {cardCounts.map((item) => {
+        {cardCounts.map((item, x) => {
           return (
-            <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12 col-12">
+            <div
+              className="col-lg-4 col-md-6 col-sm-12 col-xs-12 col-12"
+              key={x}
+            >
               <div className="dealwrapper">
                 <div className="ribbon-wrapper">
                   <div className="ribbon-tag">30% Off</div>
@@ -29,17 +32,17 @@ const FullBodyCheckup = () => {
                   </span>
                 </div>
                 <div className="body">
-                  <h6>Smart Health Full Body Checkup</h6>
+                  <span>Smart Health Full Body Checkup</span>
                 </div>
                 <hr />
                 <div className="features">
                   <h5>Same Day Report</h5>
                 </div>
                 <div className="footer d-flex justify-content-center gap-3">
-                  <button className="btn common-btn common-btn-danger">
+                  <button className="btn common-btn btn-secondary">
                     Book Now
                   </button>{" "}
-                  <button className="btn common-btn common-btn-primary">
+                  <button className="btn common-btn btn-success">
                     <CartIcon /> Add To Cart
                   </button>
                 </div>

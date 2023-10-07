@@ -30,25 +30,30 @@ const Header = ({ isStickyHeader }) => {
       <div className="container">
         <nav className="navbar navbar-expand-lg navbar-light py-2 py-lg-0">
           <Link to="/" className="navbar-brand">
-            <img className="img-fluid logo-image" src={Logo} alt="Logo" />
+            <img
+              className="img-fluid logo-image"
+              src={Logo}
+              alt="Logo"
+              height="40"
+              width="50"
+            />
           </Link>
           <div>
-            <button
-              type="button"
+            <Link
               className="navbar-toggler ms-auto me-2 w-auto border-0"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarCollapse"
+              to="/"
+              aria-label="Cart Navbar"
             >
               <CartIcon height="1.5rem" fill="#000" />
-            </button>
-            <button
-              type="button"
+            </Link>
+            <Link
               className="navbar-toggler ms-auto me-0 w-auto  border-0"
               data-bs-toggle="collapse"
               data-bs-target="#navbarCollapse"
+              aria-label="navbarCollapse"
             >
               <span className="navbar-toggler-icon"></span>
-            </button>
+            </Link>
           </div>
           <div className="collapse navbar-collapse" id="navbarCollapse">
             <div className="navbar-nav ms-auto">
@@ -89,12 +94,20 @@ const Header = ({ isStickyHeader }) => {
               </Link> */}
             </div>
             <div className="border-start px-2 d-none d-lg-block">
-              <button type="button" className="btn btn-sm p-0 mx-2">
+              <button
+                type="button"
+                className="btn btn-sm p-0 mx-2"
+                aria-label="Search"
+              >
                 <Search />
               </button>
             </div>
             <div className="border-start px-2 d-none d-lg-block">
-              <button type="button" className="btn btn-sm p-0 mx-2">
+              <button
+                type="button"
+                className="btn btn-sm p-0 mx-2"
+                aria-label="Cart"
+              >
                 <CartIcon height="1rem" fill="#000" />
               </button>
             </div>

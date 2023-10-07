@@ -39,10 +39,10 @@ const PopularPackages = () => {
         {[1, 2, 4].map((_v, _x) => {
           return (
             <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12" key={_x}>
-              <div className="dealwrapper primary">
+              <div className="dealwrapper success">
                 <div className="body">
                   <h4 className="heading-2">Smart Health Full Body Checkup</h4>
-                  <h6>(with Thyroid Profile & CBC)</h6>
+                  <span className="title">(with Thyroid Profile & CBC)</span>
                 </div>
                 <hr />
                 <div className="test-counts">
@@ -65,7 +65,7 @@ const PopularPackages = () => {
                               <CheckCircle height="1.3rem" />
                             </div>
                             <div>
-                              <h6>{_v.title}</h6>
+                              <span className="title">{_v.title}</span>
                               <span>( {_v.description} )</span>
                             </div>
                           </div>
@@ -86,7 +86,7 @@ const PopularPackages = () => {
                   <div className="button-container">
                     <button
                       href="#"
-                      className="btn common-btn common-btn-primary common-btn-hover-zoom"
+                      className="btn common-btn btn-success common-btn-hover-zoom"
                     >
                       Book Now
                     </button>
