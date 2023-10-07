@@ -102,7 +102,7 @@ const SearchForm = () => {
                     </div>
                   </div>
                 </div>
-                <div className="col-md-4 col-sm-4 col-lg-4 col-6">
+                <div className="col-md-4 col-sm-4 col-lg-4 col-12">
                   <div className="location-container">
                     <select
                       name="location"

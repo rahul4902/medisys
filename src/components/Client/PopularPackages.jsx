@@ -21,18 +21,18 @@ const PopularPackages = () => {
     },
   ];
   return (
-    <div className="container py-5">
+    <div className="container mt-5">
       <div className="row">
-        <div className="col-12 mb-5">
+        <div className="col-12">
           {/* <span className="line"></span>
           <span className="heading">Most Popular Packages</span>
           <span className="line"></span> */}
-          <div className="sectionHead">
-            <h5 className="subtitle">
+          <div className="">
+            {/* <h5 className="subtitle">
               <span className="line"></span>
               <span className="subtitle-text">Most Popular Packages</span>
-            </h5>
-            <h4 className="title">Popular Packages</h4>
+            </h5> */}
+            <h4 className="title">Most Popular Packages</h4>
           </div>
         </div>
 
@@ -42,7 +42,7 @@ const PopularPackages = () => {
               <div className="dealwrapper success">
                 <div className="body">
                   <h4 className="heading-2">Smart Health Full Body Checkup</h4>
-                  <span className="title">(with Thyroid Profile & CBC)</span>
+                  <span>(with Thyroid Profile & CBC)</span>
                 </div>
                 <hr />
                 <div className="test-counts">
@@ -66,6 +66,7 @@ const PopularPackages = () => {
                             </div>
                             <div>
                               <span className="title">{_v.title}</span>
+                              <br />
                               <span>( {_v.description} )</span>
                             </div>
                           </div>

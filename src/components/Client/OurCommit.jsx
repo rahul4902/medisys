@@ -100,17 +100,18 @@ const OurCommit = () => {
   // };
 
   return (
-    <div className="container py-5">
+    <div className="container mt-5">
       <div className="row">
-        <div className="col-12 mb-5">
+        <div className="col-12">
           {/* <span className="line"></span>
           <span className="heading">Our Commitments</span>
           <span className="line"></span> */}
-          <div className="sectionHead">
-            <h5 className="subtitle">
-              {/* <span className="line"></span> */}
-              {/* <span className="subtitle-text">Most Popular Packages</span> */}
-            </h5>
+          <div className="">
+            {/* <h5 className="subtitle"> */}
+            {/* <span className="line"></span> */}
+            {/* <span className="subtitle-text">Most Popular Packages</span> */}
+            {/* </h5> */}
+            {/* <h4 className="title">Our Commitments</h4> */}
             <h4 className="title">Our Commitments</h4>
           </div>
         </div>

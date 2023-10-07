@@ -291,8 +291,9 @@ a {
   border-radius: 8px;
   -webkit-box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.15);
-  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.15);
+  /* box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.15); */
   position: relative;
+  flex: none;
 }
 .dealwrapper .header {
   text-align: center;
@@ -1081,11 +1082,109 @@ a {
 .home-image {
   display: none;
 }
+
+.frequent-img {
+  height: 61px;
+  width: 61px;
+}
+
+.frequent-container {
+  width: 100%;
+  overflow: auto;
+  display: flex;
+  justify-content: flex-start;
+  row-gap: 30px;
+  column-gap: 20px;
+}
+
+.scrollable-container {
+  /* margin-top: 30px; */
+  width: 100%;
+  overflow: auto;
+  display: flex;
+  justify-content: flex-start;
+  row-gap: 30px;
+  column-gap: 37px;
+  background-color: #fff;
+}
+
+.scrollable-container .scrollable-card {
+  cursor: pointer;
+  padding: 10px 20px 10px 10px;
+  gap: 20px;
+  flex-direction: row;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  white-space: break-spaces;
+  flex-shrink: 0;
+  background-color: white;
+}
+.scrollable-container::-webkit-scrollbar {
+  display: none;
+}
+.frequent-container::-webkit-scrollbar {
+  display: none;
+}
+
+.frequent-container .frequent-card {
+  cursor: pointer;
+  padding: 10px 20px 10px 10px;
+  gap: 20px;
+  flex-direction: row;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  white-space: break-spaces;
+  flex-shrink: 0;
+  background-color: white;
+}
+.frequent-container .frequent-card .frequent-icon {
+  width: 61px;
+  height: 61px;
+  place-self: center;
+  padding: 14px 14px 15px 15px;
+  background: linear-gradient(223.23deg, #fff -39.74%, #dbf5f9 94.44%);
+  border-radius: 50%;
+}
+.frequent-container .frequent-card .frequent-icon img {
+  color: transparent;
+  height: 100%;
+  width: 100%;
+}
+.frequent-container .frequent-card p {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  margin-bottom: 0;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 30px;
+  margin-left: 0;
+  color: #0e3f6c;
+  margin-bottom: 30px;
+}
+
 @media (max-width: 991.98px) {
   /* .navbar .navbar-brand {
     width: 126px;
     height: 100px;
   } */
+
+  .title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #0e3f6c;
+    margin-bottom: 20px;
+  }
 
   .navbar .navbar-nav .nav-link {
     margin-right: 0;
@@ -1112,6 +1211,76 @@ a {
   }
   .home-image {
     display: block;
+  }
+  .search-form {
+    margin-top: 20px;
+    border-radius: 10px;
+  }
+  .absolute-header {
+    position: relative;
+    background-color: #fff;
+  }
+
+  .sticky-top {
+    position: fixed !important;
+  }
+
+  #navbarCollapse.show {
+    width: 85%;
+    height: 100%;
+    display: block !important;
+    position: fixed !important;
+    z-index: 1 !important;
+    background: white !important;
+    top: 50px !important;
+    left: 0 !important;
+    padding: 0px 10px 10px 10px;
+  }
+  .navLinkMobile {
+    display: flex !important;
+    flex-direction: inherit !important;
+    justify-content: space-around !important;
+    margin-top: 0 !important;
+  }
+  .mobileSideBar {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-around !important;
+    margin-top: 0 !important;
+  }
+  .absolute-header .navbar-nav .nav-link {
+    color: #000 !important;
+  }
+  .logo-image {
+    height: 30px !important;
+  }
+
+  .sectionHead .subtitle .subtitle-text {
+    font-size: 25px;
+  }
+  .line {
+    display: none;
+  }
+  .frequent-container .frequent-card {
+    flex-direction: column;
+    height: 100px;
+    width: 100px;
+  }
+  .frequent-container .frequent-card .frequent-icon {
+    width: 39px;
+    height: 39px;
+    padding: 7px 8px 8px 7px;
+    background: linear-gradient(223.23deg, #fff -39.74%, #dbf5f9 94.44%);
+    border-radius: 50%;
+  }
+  .frequent-container .frequent-card p {
+    text-align: center;
+    color: #1d1617;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    display: grid;
+    place-items: center;
   }
 }
 

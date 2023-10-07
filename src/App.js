@@ -13,10 +13,12 @@ import "react-toastify/dist/ReactToastify.css";
 import PrivateAdminRoute from "./helper/PrivateAdminRoute";
 
 import Header from "./components/Client/Header";
+import Loader from "./components/Loader";
 // import QueryFormPopup from "./components/Client/QueryFormPopup";
 
 const AdminLayout = React.lazy(() => import("./layouts/AdminLayout"));
 const Home = React.lazy(() => import("./components/Client/Home"));
+
 const AdminLogin = React.lazy(() => import("./components/admin/Login"));
 const AdminRegister = React.lazy(() => import("./components/admin/Register"));
 const WhatsAppIcon = React.lazy(() =>
@@ -42,9 +44,7 @@ function App() {
   //     position: toast.POSITION.TOP_CENTER,
   //   });
   // };
-  const LoadingSpinner = () => {
-    return <>Loading....</>;
-  };
+
   const routeArray = [
     { path: "/", isStickyHeader: true, component: <Home /> },
     { path: "/about", isStickyHeader: false, component: <About /> },
@@ -84,7 +84,7 @@ function App() {
                 element={
                   <div className="App">
                     <Header isStickyHeader={linkItem.isStickyHeader} />
-                    <Suspense fallback={<LoadingSpinner />}>
+                    <Suspense fallback={<Loader />}>
                       {linkItem.component}
                     </Suspense>
                     <WhatsAppIcon />
