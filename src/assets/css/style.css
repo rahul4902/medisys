@@ -5,7 +5,7 @@
 
 /********** Template CSS **********/
 :root {
-  --primary: #198754;
+  --primary: #1faa88;
   --success: hsl(120, 60%, 30%);
   --danger: hsl(0deg 59.48% 30%);
   --info: hsl(0deg 59.48% 30%);
@@ -44,7 +44,7 @@ a {
   align-items: center;
 }
 .btn2-primary {
-  background-color: #198754;
+  background-color: #1faa88;
   min-width: 200px;
   width: max-content;
   color: #fff;
@@ -398,7 +398,7 @@ a {
 }
 
 .dealwrapper.primary .ribbon-tag {
-  background: #198754;
+  background: #1faa88;
 }
 
 .dealwrapper.primary {
@@ -1146,7 +1146,8 @@ a {
   height: 61px;
   place-self: center;
   padding: 14px 14px 15px 15px;
-  background: linear-gradient(223.23deg, #fff -39.74%, #dbf5f9 94.44%);
+
+  background: rgba(31, 122, 31, 0.2);
   border-radius: 50%;
 }
 .frequent-container .frequent-card .frequent-icon img {
@@ -1274,7 +1275,7 @@ a {
     width: 39px;
     height: 39px;
     padding: 7px 8px 8px 7px;
-    background: linear-gradient(223.23deg, #fff -39.74%, #dbf5f9 94.44%);
+    background: rgba(31, 122, 31, 0.2);
     border-radius: 50%;
   }
   .frequent-container .frequent-card p {
