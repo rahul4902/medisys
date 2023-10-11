@@ -1,3 +1,7 @@
+@charset "UTF-8";
+@import "https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap";
+
 #root {
   height: 100vh;
   /* width: 100vw; */
@@ -21,6 +25,7 @@ html {
 }
 body {
   background-color: #f3f3f9 !important;
+  font-family: Outfit, sans-serif;
 }
 a {
   text-decoration: none !important;
@@ -1306,4 +1311,9 @@ a {
     transition: 0.5s;
     opacity: 1;
   }
+}
+
+.address p {
+  color: #78909c;
+  margin: 0;
 }
