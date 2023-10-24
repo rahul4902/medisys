@@ -1,0 +1,207 @@
+$--primary: #1faa88;
+
+.header {
+  display: contents;
+  .main-header {
+    position: sticky;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    z-index: 2;
+    padding: 16px 42px;
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .right-side {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        .header-buttons {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          column-gap: 15px;
+          width: auto;
+          height: 48px;
+          padding: 8px;
+          border: 1px solid #d9d9d9;
+          border-radius: 15px;
+          cursor: pointer;
+          position: relative;
+          svg {
+            font-size: 28px;
+          }
+        }
+        .header-buttons-text {
+          color: #000;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 18px;
+          line-height: 14px;
+        }
+        .header-cart-count {
+          border-radius: 50%;
+          color: #fff;
+          width: 17px;
+          height: 17px;
+          background-color: #e00646;
+          position: absolute;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          top: -6px;
+          right: -6px;
+        }
+      }
+    }
+  }
+}
+// Search Input Box
+
+.header-search {
+  .item-search {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+
+    .search-input-box {
+      display: flex;
+      padding: 10px 20px;
+      border: 1px solid #d9d9d9;
+      //   box-shadow: 0 4px 10px hsla(0, 0%, 55%, 0.2);
+      border-radius: 15px;
+      width: 35vw;
+      max-width: 100%;
+      background: #fff;
+      align-items: center;
+      gap: 10px;
+      svg {
+        fill: $--primary;
+      }
+      form {
+        width: 100%;
+        input {
+          font-style: normal;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 24px;
+          color: #000;
+          width: 100%;
+          background: transparent;
+          border: none;
+          &:focus-visible {
+            outline: none;
+            border: none;
+          }
+        }
+      }
+      .search-icon {
+        width: 20px;
+        height: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 5px;
+        cursor: pointer;
+        svg {
+          fill: $--primary !important;
+        }
+      }
+    }
+    // List Of Searching
+
+    .DesktopSearch_search__inputBox__focused__lrxno {
+      transition: all 0.3s ease;
+      // background: #f5f5f5;
+      box-shadow: 0px 0px 10px 0px #e2e2e2;
+      border-radius: 15px 15px 0 0;
+      border: 1px solid $--primary;
+    }
+  }
+}
+
+// Result Container
+.search-list {
+  position: relative;
+  .result-container {
+    display: block !important;
+    border: 1px solid #d9d9d9;
+    border-radius: 0px 0px 15px 15px;
+    width: 35vw;
+    background-color: whitesmoke;
+    position: absolute;
+    top: 48px;
+    .result {
+      border-bottom: 2px solid lightgray;
+      ul {
+        padding: 0px;
+        margin: 0px;
+        li {
+          list-style: none;
+          color: #5c5d5e;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 18px;
+          line-height: 14px;
+          cursor: pointer;
+          margin: 20px 15px;
+        }
+      }
+    }
+    .recent-container {
+      padding: 15px;
+      .heading-text {
+        color: #5c5d5e;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 14px;
+      }
+      .recent-tags {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+        flex-wrap: wrap;
+        .tag {
+          border-radius: 20px;
+          border: 1px solid #5c5d5e;
+          padding: 10px 20px;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 14px;
+          color: #5c5d5e;
+          &:hover {
+            cursor: pointer;
+            box-shadow: 0px 0px 10px 0px gray;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 991.98px) {
+  .item-search {
+    margin-bottom: 10px;
+    .search-input-box {
+      width: 100% !important;
+    }
+  }
+
+  .main-header {
+    padding: 16px 20px!important;
+    .header-buttons{
+      span{
+        display: none;
+      }
+    }
+  }
+  .search-list .result-container{
+    width: 100%;
+  }
+}

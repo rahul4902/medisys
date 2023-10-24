@@ -3,6 +3,7 @@ import HomeIcon from "../../icons/HomeIcon";
 import VialIcon from "../../icons/VialIcon";
 import UserIcons from "../../icons/UserIcons";
 import { useState } from "react";
+import TagIcon from "../../assets/images/icons/svg/TagIcon";
 
 const SideBar = ({ isOpen, onSidebarToggle }) => {
   const navItems = [
@@ -21,6 +22,7 @@ const SideBar = ({ isOpen, onSidebarToggle }) => {
         { to: "/admin/diagnostic/test", label: "Tests" },
       ],
     },
+    { to: "/admin/packages/", label: "Packages", icon: <TagIcon /> },
   ];
 
   function SidebarItem({ to, label, children }) {

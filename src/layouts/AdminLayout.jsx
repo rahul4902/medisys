@@ -8,6 +8,7 @@ import Dashboard from "../components/admin/Dashboard";
 import Test from "../components/admin/components/Test/Test";
 import Department from "../components/admin/components/department/Department";
 import TestList from "../components/admin/components/Test/TestList";
+import Package from "../components/admin/components/packages/List";
 
 const AdminLayout = (props) => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -39,6 +40,7 @@ const AdminLayout = (props) => {
             <Route path="/diagnostic/test/" element={<TestList />} />
             <Route path="/diagnostic/test/create" element={<Test />} />
             <Route path="/diagnostic/department/" element={<Department />} />
+            <Route path="/packages" element={<Package />} />
           </Routes>
         </main>
         <Footer />

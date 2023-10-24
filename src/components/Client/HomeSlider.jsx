@@ -2,8 +2,7 @@ import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Carousel } from "react-responsive-carousel";
-import s1 from "../../assets/images/banner/1.jpg";
-import s3 from "../../assets/images/banner/3.jpg";
+import s1 from "../../assets/images/banner/1.jpeg";
 
 function HomeSlider() {
   return (
@@ -16,7 +15,7 @@ function HomeSlider() {
         interval={2000}
         infiniteLoop={true}
       >
-        {[s3, s3, s3].map((_v, _x) => {
+        {[s1,s1,s1].map((_v, _x) => {
           return (
             <div key={_x}>
               <LazyLoadImage

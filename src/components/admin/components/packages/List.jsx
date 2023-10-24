@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import DynamicMuiTable from "../DynamicMuiTable";
 import { apiUrl } from "../../../../utils/constants";
 
-function Department() {
+function List() {
   const [formData, setFormData] = useState({
     name: "",
     status: "",
@@ -127,7 +127,7 @@ function Department() {
     <div className="row">
       <div className="col-lg-8 col-md-8 col-sm-12 col-12">
         <DynamicMuiTable
-          title={"Department List"}
+          title={"Packages List"}
           data={departmentData}
           columns={columns}
           deleteUrl={`${apiUrl}/admin/department/delete`}
@@ -160,7 +160,7 @@ function Department() {
                     d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
                   ></path>
                 </svg>
-                <span>Add Department</span>
+                <span>Add Package</span>
               </h4>
             </div>
           </div>
@@ -179,6 +179,23 @@ function Department() {
                 {errors?.name && (
                   <span className="error text-danger fw-bold text-capitalize">
                     {errors.name}
+                  </span>
+                )}
+              </div>
+              <div className="form-group mb-2">
+                <label>Special Instruction</label>
+                <textarea
+                  type="text"
+                  name="instruction"
+                  id="instruction"
+                  className="w-100 ic-t"
+                  value={formData.instruction}
+                  onChange={handleChange}
+                  rows={2}
+                ></textarea>
+                {errors?.instruction && (
+                  <span className="error text-danger fw-bold text-capitalize">
+                    {errors.instruction}
                   </span>
                 )}
               </div>
@@ -214,4 +231,4 @@ function Department() {
   );
 }
 
-export default Department;
+export default List;

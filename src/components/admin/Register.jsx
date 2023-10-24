@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { handleApiResponse } from "../../helper/apiHelpers";
+import { apiUrl } from "../../utils/constants";
 
 function Register() {
   const [loaderBtn, setLoaderBtn] = useState(false);
@@ -32,10 +33,7 @@ function Register() {
     setErrors(null);
     setLoaderBtn(true);
     try {
-      const response = await axios.post(
-        "http://localhost:5000/user/register",
-        formData
-      );
+      const response = await axios.post(`${apiUrl}/user/register`, formData);
       handleApiResponse(
         response,
         (data) => {
@@ -126,10 +124,10 @@ function Register() {
                     >
                       {loaderBtn && (
                         <div
-                          class="spinner-border spinner-border-sm me-2"
+                          className="spinner-border spinner-border-sm me-2"
                           role="status"
                         >
-                          <span class="sr-only"></span>
+                          <span className="sr-only"></span>
                         </div>
                       )}{" "}
                       Submit

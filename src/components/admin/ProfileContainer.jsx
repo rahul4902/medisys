@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { handleApiResponse } from "../../helper/apiHelpers";
 import { toast } from "react-toastify";
+import { apiUrl } from "../../utils/constants";
 
 const ProfileContainer = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -21,7 +22,7 @@ const ProfileContainer = () => {
       const token = localStorage.getItem("AdminSessionToken");
       localStorage.removeItem("AdminSessionToken");
       axios.defaults.headers.common["Authorization"] = `${token}`;
-      const response = await axios.post("http://localhost:5000/user/logout", {
+      const response = await axios.post(`${apiUrl}/user/logout`, {
         token: token,
       });
       handleApiResponse(

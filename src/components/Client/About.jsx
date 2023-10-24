@@ -1,9 +1,11 @@
 import React from "react";
 import AboutImage from "../../assets/images/about.svg";
+import ReadMoreOffer from "./ReadMoreOffer";
 
 const About = () => {
   return (
     <div className="container my-5">
+      <ReadMoreOffer />
       <div className="about-card  shadow">
         <div className="row">
           <div className="col-md-7">

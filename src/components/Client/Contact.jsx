@@ -90,22 +90,22 @@ const Contact = () => {
         <div className="col-md-6">
           <div className="shadow bg-white mt-5 br-20 p-4 address">
             <h5 className="mb-4">Contact Info</h5>
-            <div class="d-flex gap-3 align-items-center mb-3">
+            <div className="d-flex gap-3 align-items-center mb-3">
               <Location height="2rem" fill="#78909c" />
-              <p class="fw-bold fs-6 ">
+              <p className="fw-bold fs-6 ">
                 D -113, Basement Floor, Sector -63, Noida , (U.P) <br />
                 Pin-Code - 201301, India
               </p>
             </div>
-            <div class="d-flex gap-3 align-items-center  mb-3">
+            <div className="d-flex gap-3 align-items-center  mb-3">
               <ContactIcon height="1.5rem" fill="#78909c" />
               <Link to="tel:919716164902">
-                <p class="fw-bold fs-6 ">+919991112222</p>
+                <p className="fw-bold fs-6 ">+919991112222</p>
               </Link>
             </div>
-            <div class="d-flex gap-3 align-items-center  mb-3">
+            <div className="d-flex gap-3 align-items-center  mb-3">
               <MailIcon height="1.5rem" fill="#78909c" />
-              <p class="fw-bold fs-6 ">info@medi.com</p>
+              <p className="fw-bold fs-6 ">info@medi.com</p>
             </div>
           </div>
         </div>

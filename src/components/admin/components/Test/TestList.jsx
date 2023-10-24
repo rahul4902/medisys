@@ -4,6 +4,7 @@ import { handleApiResponse } from "../../../../helper/apiHelpers";
 
 import DynamicMuiTable from "../DynamicMuiTable";
 import { Link } from "react-router-dom";
+import { apiUrl } from "../../../../utils/constants";
 
 function TestList() {
   // const [formData, setFormData] = useState({
@@ -26,7 +27,7 @@ function TestList() {
     try {
       const response = await axios({
         method: "get",
-        url: "http://localhost:5000/admin/test/list",
+        url: `${apiUrl}/admin/test/list`,
       });
 
       handleApiResponse(
@@ -43,58 +44,6 @@ function TestList() {
       // toast.error("Something went wrong.");
     }
   };
-
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData((prevData) => ({
-  //     ...prevData,
-  //     [name]: value,
-  //   }));
-  // };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setErrors(null);
-
-  //   try {
-  //     var editUrl;
-  //     var method;
-  //     if (isEditFrom) {
-  //       editUrl = "http://localhost:5000/admin/test/update/" + userId;
-  //       method = "put";
-  //     } else {
-  //       editUrl = "http://localhost:5000/admin/test/create";
-  //       method = "post";
-  //     }
-
-  //     // const response = await axios.post(editUrl, formData);
-  //     const response = await axios({
-  //       method: method,
-  //       url: editUrl,
-  //       data: formData,
-  //     });
-
-  //     handleApiResponse(
-  //       response,
-  //       (data) => {
-  //         setFormData({
-  //           name: "",
-  //           status: "",
-  //         });
-  //         getTestList();
-  //         setIsEditForm(false);
-  //       },
-  //       (errors) => {
-  //         console.log("errors", errors);
-  //       },
-  //       setErrors
-  //     );
-  //   } catch (error) {
-  //     toast.error("Something went wrong.");
-  //   } finally {
-  //     // setLoading(false);
-  //   }
-  // };
 
   var columns = [
     { name: "name", label: "Name" },
@@ -147,9 +96,9 @@ function TestList() {
           title={"Test List"}
           data={testData}
           columns={columns}
-          deleteUrl="http://localhost:5000/admin/test/delete"
-          statusUrl="http://localhost:5000/admin/test/status"
-          editDataUrl="http://localhost:5000/admin/test/getById"
+          deleteUrl={`${apiUrl}/admin/test/delete`}
+          statusUrl={`${apiUrl}/admin/test/status`}
+          editDataUrl={`${apiUrl}/admin/test/getById`}
           refreshTable={getTestList}
           setIsEditForm={setIsEditForm}
           userId={userId}

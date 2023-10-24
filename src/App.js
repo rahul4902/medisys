@@ -8,12 +8,15 @@ import {
 import { useEffect } from "react";
 import "./assets/css/style.css";
 import "./assets/css/admin.css";
+import "./assets/css/nav.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PrivateAdminRoute from "./helper/PrivateAdminRoute";
 
 import Header from "./components/Client/Header";
 import Loader from "./components/Loader";
+import { CustomClientContext } from "./context/clientContext";
+import Search from "./components/Client/pages/Search";
 // import QueryFormPopup from "./components/Client/QueryFormPopup";
 
 const AdminLayout = React.lazy(() => import("./layouts/AdminLayout"));
@@ -49,6 +52,7 @@ function App() {
     { path: "/", isStickyHeader: true, component: <Home /> },
     { path: "/about", isStickyHeader: false, component: <About /> },
     { path: "/contact", isStickyHeader: false, component: <Contact /> },
+    { path: "/search", isStickyHeader: false, component: <Search/> },
     {
       path: "/search/details/:id",
       isStickyHeader: false,
@@ -72,44 +76,46 @@ function App() {
           theme="light"
         />
       </div>
-      <Router>
-        <Fragment>
-          <Routes>
-            <Route path="/admin/login" element={<AdminLogin />} />
-            <Route path="/admin/register" element={<AdminRegister />} />
-            {routeArray.map((linkItem, index) => (
-              <Route
-                key={index}
-                path={linkItem.path}
-                element={
-                  <div className="App">
-                    <Header isStickyHeader={linkItem.isStickyHeader} />
-                    <Suspense fallback={<Loader />}>
-                      {linkItem.component}
-                    </Suspense>
-                    <WhatsAppIcon />
-                    <Footer />
-                    {/* <QueryFormPopup /> */}
-                  </div>
-                }
-              />
-            ))}
-
-            <Route
-              path="/admin/*"
-              element={
-                <PrivateAdminRoute
+      <CustomClientContext>
+        <Router>
+          <Fragment>
+            <Routes>
+              <Route path="/admin/login" element={<AdminLogin />} />
+              <Route path="/admin/register" element={<AdminRegister />} />
+              {routeArray.map((linkItem, index) => (
+                <Route
+                  key={index}
+                  path={linkItem.path}
                   element={
-                    <AdminLayout>
-                      <Outlet />
-                    </AdminLayout>
+                    <div className="App">
+                      <Header isStickyHeader={linkItem.isStickyHeader} />
+                      <Suspense fallback={<Loader />}>
+                        {linkItem.component}
+                      </Suspense>
+                      <WhatsAppIcon />
+                      <Footer />
+                      {/* <QueryFormPopup /> */}
+                    </div>
                   }
                 />
-              }
-            />
-          </Routes>
-        </Fragment>
-      </Router>
+              ))}
+
+              <Route
+                path="/admin/*"
+                element={
+                  <PrivateAdminRoute
+                    element={
+                      <AdminLayout>
+                        <Outlet />
+                      </AdminLayout>
+                    }
+                  />
+                }
+              />
+            </Routes>
+          </Fragment>
+        </Router>
+      </CustomClientContext>
     </>
   );
 }

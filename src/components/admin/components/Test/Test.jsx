@@ -3,6 +3,7 @@ import axios from "axios";
 import { handleApiResponse } from "../../../../helper/apiHelpers";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { apiUrl } from "../../../../utils/constants";
 
 function Test() {
   const [departments, setDepartments] = useState([]);
@@ -93,10 +94,10 @@ function Test() {
       var method;
       if (isEditFrom) {
         method = "put";
-        editUrl = "http://localhost:5000/admin/test/update/" + userId;
+        editUrl = `${apiUrl}/admin/test/update/` + userId;
       } else {
         method = "post";
-        editUrl = "http://localhost:5000/admin/test/create";
+        editUrl = `${apiUrl}/admin/test/create`;
       }
 
       // const response = await axios.post(editUrl, formData);
@@ -157,7 +158,7 @@ function Test() {
     try {
       const response = await axios({
         method: "get",
-        url: "http://localhost:5000/admin/department/list",
+        url: `${apiUrl}/admin/department/list`,
       });
 
       handleApiResponse(

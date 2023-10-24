@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { handleApiResponse } from "../../helper/apiHelpers";
 import { toast } from "react-toastify";
+import { apiUrl } from "../../utils/constants";
 
 function Login() {
   const [loaderBtn, setLoaderBtn] = useState(false);
@@ -11,7 +12,7 @@ function Login() {
     email: "",
     password: "",
   });
-  const [setErrors] = useState({
+  const [errors, setErrors] = useState({
     email: "",
     password: "",
   });
@@ -34,10 +35,7 @@ function Login() {
     });
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/user/login",
-        formData
-      );
+      const response = await axios.post(`${apiUrl}/user/login`, formData);
       handleApiResponse(
         response,
         (data) => {
@@ -96,10 +94,10 @@ function Login() {
                     >
                       {loaderBtn && (
                         <div
-                          class="spinner-border spinner-border-sm me-2"
+                          className="spinner-border spinner-border-sm me-2"
                           role="status"
                         >
-                          <span class="sr-only"></span>
+                          <span className="sr-only"></span>
                         </div>
                       )}
                       SignIn
