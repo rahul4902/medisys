@@ -7,13 +7,14 @@ import { toast } from "react-toastify";
 import { apiUrl } from "../../../utils/constants";
 import { useValue } from "../../../context/clientContext";
 import MicroPhoneAnimation from "./MicroPhoneAnimation";
-import CloseIcon from "../../../assets/images/icons/svg/CloseIcon"
+import CloseIcon from "../../../assets/images/icons/svg/CloseIcon";
 const SearchInputBox = () => {
   const navigate = useNavigate();
   const { query, setQuery } = useValue();
   const [isFocused, setIsFocused] = useState(false);
   const [searchLoader, setSearchLoader] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
+  const [isListening, setIsListening] = useState(false);
   const handleFocus = () => {
     setIsFocused(true);
   };
@@ -56,17 +57,31 @@ const SearchInputBox = () => {
     setIsFocused(false);
   };
 
+  // const startSpeechRecognition = () => {
+  //   const recognition = new window.webkitSpeechRecognition();
+  //   recognition.onresult = function (event) {
+  //     const transcript = event.results[0][0].transcript;
+  //     setQuery(transcript);
+  //   };
+  //   recognition.start();
+  // };
   const startSpeechRecognition = () => {
+    setIsListening(true);
     const recognition = new window.webkitSpeechRecognition();
     recognition.onresult = function (event) {
       const transcript = event.results[0][0].transcript;
       setQuery(transcript);
+      setIsListening(false);
+    };
+    recognition.onerror = function (event) {
+      console.error("Error occurred in recognition: ", event.error);
+      setIsListening(false); // Set state to false if recognition fails
     };
     recognition.start();
   };
   return (
     <>
-      {/* <MicroPhoneAnimation/> */}
+      {isListening ? <MicroPhoneAnimation /> : ""}
       <div className="header-search">
         <div className={`item-search ${isFocused ? "search-list" : ""}`}>
           <div
@@ -86,8 +101,8 @@ const SearchInputBox = () => {
               />
             </form>
             {isFocused ? (
-              <div className="search-icon"  onClick={handleBlur}>
-                <CloseIcon height="2rem"/>
+              <div className="search-icon" onClick={handleBlur}>
+                <CloseIcon height="2rem" />
               </div>
             ) : (
               <div className="search-icon" onClick={startSpeechRecognition}>

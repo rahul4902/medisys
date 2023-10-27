@@ -184,6 +184,81 @@ $--primary: #1faa88;
     }
   }
 }
+.microphone {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+  backdrop-filter: blur(5px);
+  background-color: #0000002a;
+  z-index: 5;
+  svg {
+    fill: red;
+    height: 200px;
+    width: auto;
+  }
+  .button {
+    cursor: pointer;
+    &:active,
+    &:focus {
+      border: 1px solid #1faa88;
+      color: #274957;
+      outline: none;
+    }
+    &--microphone {
+      background-color: transparent;
+      border: 1px solid #1faa88;
+      border-radius: 50%;
+      color: #447694;
+      font-size: 30vh;
+      height: 50vh;
+      animation: zoom 0.5s infinite alternate ease-in-out;
+      width: 50vh;
+    }
+
+    &--microphone-active {
+      background-color: transparent;
+      border: 1px solid #ff5852;
+      border-radius: 50%;
+      color: #ff5852;
+      font-size: 50vh;
+      height: 70vh;
+      transition: all 0.1s;
+      width: 70vh;
+      &:active,
+      &:focus {
+        border: 1px solid #ff5852;
+        color: #ff5852;
+        outline: none;
+      }
+    }
+
+    &--microphone-recording-failure {
+      border-color: red;
+      color: red;
+      &:active,
+      &:focus {
+        border-color: red;
+        color: red;
+      }
+    }
+
+    &--microphone-recording-success {
+      border-color: #88d8b0;
+      color: #88d8b0;
+      &:active,
+      &:focus {
+        border-color: #88d8b0;
+        color: #88d8b0;
+      }
+    }
+  }
+}
 
 @media (max-width: 991.98px) {
   .item-search {
@@ -194,14 +269,24 @@ $--primary: #1faa88;
   }
 
   .main-header {
-    padding: 16px 20px!important;
-    .header-buttons{
-      span{
+    padding: 16px 20px !important;
+    .header-buttons {
+      span {
         display: none;
       }
     }
   }
-  .search-list .result-container{
+  .search-list .result-container {
     width: 100%;
+  }
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(1); /* Initial scale, normal size */
+  }
+  100% {
+    transform: scale(1.2); /* Final scale, 1.2 times the original size */
+    border-width: 4px; /* Increase border thickness on zoom in */
   }
 }

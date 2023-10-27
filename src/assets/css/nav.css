@@ -174,6 +174,75 @@
   box-shadow: 0px 0px 10px 0px gray;
 }
 
+.microphone {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.1647058824);
+  z-index: 5;
+}
+.microphone svg {
+  fill: red;
+  height: 200px;
+  width: auto;
+}
+.microphone .button {
+  cursor: pointer;
+}
+.microphone .button:active, .microphone .button:focus {
+  border: 1px solid #1faa88;
+  color: #274957;
+  outline: none;
+}
+.microphone .button--microphone {
+  background-color: transparent;
+  border: 1px solid #1faa88;
+  border-radius: 50%;
+  color: #447694;
+  font-size: 30vh;
+  height: 50vh;
+  animation: zoom 0.5s infinite alternate ease-in-out;
+  width: 50vh;
+}
+.microphone .button--microphone-active {
+  background-color: transparent;
+  border: 1px solid #ff5852;
+  border-radius: 50%;
+  color: #ff5852;
+  font-size: 50vh;
+  height: 70vh;
+  transition: all 0.1s;
+  width: 70vh;
+}
+.microphone .button--microphone-active:active, .microphone .button--microphone-active:focus {
+  border: 1px solid #ff5852;
+  color: #ff5852;
+  outline: none;
+}
+.microphone .button--microphone-recording-failure {
+  border-color: red;
+  color: red;
+}
+.microphone .button--microphone-recording-failure:active, .microphone .button--microphone-recording-failure:focus {
+  border-color: red;
+  color: red;
+}
+.microphone .button--microphone-recording-success {
+  border-color: #88d8b0;
+  color: #88d8b0;
+}
+.microphone .button--microphone-recording-success:active, .microphone .button--microphone-recording-success:focus {
+  border-color: #88d8b0;
+  color: #88d8b0;
+}
+
 @media (max-width: 991.98px) {
   .item-search {
     margin-bottom: 10px;
@@ -189,5 +258,14 @@
   }
   .search-list .result-container {
     width: 100%;
+  }
+}
+@keyframes zoom {
+  0% {
+    transform: scale(1); /* Initial scale, normal size */
+  }
+  100% {
+    transform: scale(1.2); /* Final scale, 1.2 times the original size */
+    border-width: 4px; /* Increase border thickness on zoom in */
   }
 }/*# sourceMappingURL=nav.css.map */
