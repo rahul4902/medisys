@@ -4,33 +4,25 @@ import { handleApiResponse } from "../../../../helper/apiHelpers";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { apiUrl } from "../../../../utils/constants";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-function Test() {
+
+function TestEdit() {
   const [departments, setDepartments] = useState([]);
-  const [categories, setCategories] = useState([]);
   const [saveLoader, setSaveLoader] = useState(false);
   const [isEditFrom, setIsEditForm] = useState(false);
   const [userId] = useState(null);
-  const [rows, setRows] = useState([]);
-
   const [formData, setFormData] = useState({
     department: "",
-    rows: [{ name: "", description: "" }],
-    what_description:"",
-    instructions:"",
-    category: "",
     name: "",
     code: "",
-    gender: "B",
+    gender: "",
     color_code: "",
-    type: "R",
-    sample_qty: "1",
+    type: "",
+    sample_qty: "",
     remark: "",
-    report_type: "1",
+    report_type: "",
     sort_name: "",
     mrp: "",
-    auto_consume: "0",
+    auto_consume: "",
     concent_form: "",
     billing_category: "",
     max_discount: "",
@@ -50,7 +42,6 @@ function Test() {
   });
   const [errors, setErrors] = useState({
     department: "",
-    category: "",
     name: "",
     code: "",
     gender: "",
@@ -83,7 +74,6 @@ function Test() {
 
   useEffect(() => {
     getDepartmentList();
-    getCategoryList();
   }, []);
 
   const handleChange = (e) => {
@@ -102,15 +92,9 @@ function Test() {
       setSaveLoader(true);
       var editUrl;
       var method;
-      if (isEditFrom) {
-        method = "put";
-        editUrl = `${apiUrl}/admin/test/update/` + userId;
-      } else {
-        method = "post";
-        editUrl = `${apiUrl}/admin/test/create`;
-      }
+      method = "put";
+      editUrl = `${apiUrl}/admin/test/update/` + userId;
 
-      // const response = await axios.post(editUrl, formData);
       const response = await axios({
         method: method,
         url: editUrl,
@@ -185,76 +169,10 @@ function Test() {
       toast.error("Something went wrong.");
     }
   };
-  const getCategoryList = async () => {
-    try {
-      const response = await axios({
-        method: "get",
-        url: `${apiUrl}/admin/category/list`,
-      });
-
-      handleApiResponse(
-        response,
-        (data) => {
-          setCategories(data.data);
-        },
-        (errors) => {},
-        false,
-        false
-      );
-    } catch (error) {
-      console.log(error);
-      toast.error("Something went wrong.");
-    }
-  };
-
-  const handleInstructionChange = (event, editor) => {
-    const data = editor.getData();
-    setFormData((prevData) => ({
-      ...prevData,
-      instructions: data,
-    }));
-  };
-  const handleWhatDescriptoinChange = (event, editor) => {
-    const data = editor.getData();
-    setFormData((prevData) => ({
-      ...prevData,
-      what_description: data,
-    }));
-  };
-
-  const handleAddRow = () => {
-    setRows([...rows, { name: "", description: "" }]);
-  };
-
-  const handleRemoveRow = (index) => {
-    const updatedRows = [...rows];
-    updatedRows.splice(index, 1);
-    setRows(updatedRows);
-  };
-
-  const handlePerametersInputChange = (index, event) => {
-    const updatedRows = [...formData.rows];
-    updatedRows[index] = {
-      ...updatedRows[index],
-      [event.target.name]: event.target.value,
-    };
-    setFormData({
-      ...formData,
-      rows: updatedRows,
-    });
-    setRows(updatedRows);
-  };
-
   return (
     <form onSubmit={handleSubmit}>
       <div className="text-end">
         <div className="col-md-12 col-sm-12 col-12 mb-2">
-          <button
-            type="button"
-            className="btn btn-outline-secondary common-btn me-2"
-          >
-            Trash
-          </button>
           <Link to="/admin/diagnostic/test/">
             <button
               type="button"
@@ -283,7 +201,7 @@ function Test() {
       <div className="card">
         <div className="card-header">
           <div className="d-flex justify-content-between">
-            <h5 className="card-collapse-head">Diagnostic Tests</h5>
+            <h5 className="card-collapse-head">Diagnostic Tests Edit</h5>
           </div>
         </div>
         <div className="card-body">
@@ -298,29 +216,6 @@ function Test() {
               >
                 <option value="">Select Department</option>
                 {departments.map((v, _dk) => {
-                  return (
-                    <option value={v.id} key={_dk}>
-                      {v.name}
-                    </option>
-                  );
-                })}
-              </select>
-              {errors?.department && (
-                <span className="error text-danger fw-bold text-capitalize">
-                  {errors.department}
-                </span>
-              )}
-            </div>
-            <div className="col-md-4 col-sm-4 col-12 mb-2">
-              <label>Category</label>
-              <select
-                name="category"
-                className="ic form-select"
-                value={formData.category}
-                onChange={handleChange}
-              >
-                <option value="">Select Category</option>
-                {categories.map((v, _dk) => {
                   return (
                     <option value={v.id} key={_dk}>
                       {v.name}
@@ -598,131 +493,8 @@ function Test() {
           </div>
         </div>
       </div>
-      <div className="card">
-        <div className="card-header">
-          <div className="d-flex justify-content-between">
-            <h5 className="card-collapse-head">Other Info</h5>
-          </div>
-        </div>
-        <div className="card-body">
-          <div className="row">
-            <div className="col-md-12 col-sm-12 col-12 mb-2">
-              <label className="labelForTag">What is it for ?</label>
-              <CKEditor
-                editor={ClassicEditor}
-                data={formData.what_description}
-                onReady={(editor) => {
-                  // You can store the "editor" and use when it is needed.
-                  console.log("Editor is ready to use!", editor);
-                }}
-                onChange={handleWhatDescriptoinChange}
-                onBlur={(event, editor) => {
-                  console.log("Blur.", editor);
-                }}
-                onFocus={(event, editor) => {
-                  console.log("Focus.", editor);
-                }}
-              />
-
-              {errors?.what_description && (
-                <span className="error text-danger fw-bold text-capitalize">
-                  {errors.what_description}
-                </span>
-              )}
-            </div>
-            <div className="col-md-12 col-sm-12 col-12 mb-2">
-              <label className="instructions">Test Instructions</label>
-
-              <CKEditor
-                editor={ClassicEditor}
-                data={formData.instructions}
-                onReady={(editor) => {
-                  // You can store the "editor" and use when it is needed.
-                  console.log("Editor is ready to use!", editor);
-                }}
-                onChange={handleInstructionChange}
-                onBlur={(event, editor) => {
-                  console.log("Blur.", editor);
-                }}
-                onFocus={(event, editor) => {
-                  console.log("Focus.", editor);
-                }}
-              />
-              {errors?.instructions && (
-                <span className="error text-danger fw-bold text-capitalize">
-                  {errors.instructions}
-                </span>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="card">
-        <div className="card-header">
-          <div className="d-flex justify-content-between">
-            <h5 className="card-collapse-head">Parameters Details</h5>
-          </div>
-        </div>
-        <div className="card-body">
-          <div className="row">
-            <div className="col-md-12 col-sm-12 col-12 mb-2">
-              <div className="d-flex justify-content-between">
-                <label className="labelForTag">Parameters </label>
-                <button
-                  className="btn btn-primary btn-sm"
-                  onClick={handleAddRow}
-                  type="button"
-                >
-                  Add Row
-                </button>
-              </div>
-
-              <div className="">
-                {rows.map((row, index) => (
-                  <div className="row mb-3" key={index}>
-                    <div className="col-md-4">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Name"
-                        name="name"
-                        value={row.name}
-                        onChange={(e) => handlePerametersInputChange(index, e)}
-                      />
-                    </div>
-                    <div className="col-md-4">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="desc"
-                        name="description"
-                        value={row.description}
-                        onChange={(e) => handlePerametersInputChange(index, e)}
-                      />
-                    </div>
-                    <div className="col-md-2">
-                      <button
-                        className="btn btn-danger btn-sm" type="button"
-                        onClick={() => handleRemoveRow(index)}
-                      >
-                        Remove
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {errors?.what_description && (
-                <span className="error text-danger fw-bold text-capitalize">
-                  {errors.what_description}
-                </span>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
     </form>
   );
 }
 
-export default Test;
+export default TestEdit;

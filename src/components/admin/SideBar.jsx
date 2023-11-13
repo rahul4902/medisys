@@ -4,6 +4,8 @@ import VialIcon from "../../icons/VialIcon";
 import UserIcons from "../../icons/UserIcons";
 import { useState } from "react";
 import TagIcon from "../../assets/images/icons/svg/TagIcon";
+import ListIcon from "../../assets/images/icons/svg/ListIcon";
+import TreeDir from "../../assets/images/icons/svg/TreeDir";
 
 const SideBar = ({ isOpen, onSidebarToggle }) => {
   const navItems = [
@@ -13,15 +15,19 @@ const SideBar = ({ isOpen, onSidebarToggle }) => {
       label: "Clients",
       icon: <UserIcons />,
     },
+    { to: "/admin/diagnostic/category", label: "Category", icon: <ListIcon /> },
     {
-      to: "/admin/diagnostic/",
-      label: "Diagnostic Manager",
-      icon: <VialIcon />,
-      children: [
-        { to: "/admin/diagnostic/department", label: "Department" },
-        { to: "/admin/diagnostic/test", label: "Tests" },
-      ],
+      to: "/admin/diagnostic/department",
+      label: "Department",
+      icon: <TreeDir/>,
     },
+    { to: "/admin/diagnostic/test", label: "Tests", icon: <VialIcon /> },
+    // {
+    //   to: "/admin/diagnostic/",
+    //   label: "Diagnostic Manager",
+    //   icon: <VialIcon />,
+    //   children: [],
+    // },
     { to: "/admin/packages/", label: "Packages", icon: <TagIcon /> },
   ];
 

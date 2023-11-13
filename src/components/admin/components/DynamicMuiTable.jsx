@@ -8,6 +8,7 @@ import ConfirmDialog from "./ConfirmDialog";
 import axios from "axios";
 import { handleApiResponse } from "../../../helper/apiHelpers";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const DynamicMuiTable = ({
   title,
@@ -21,9 +22,13 @@ const DynamicMuiTable = ({
   setIsEditForm,
   userId,
   setUserId,
+  singlePageForm,
+  singlePageFormUrl,
+  ParentList,
 }) => {
   const [deleteConfirm, setDeleteConfirm] = useState(false);
   const [statusConfirm, setStatusConfirm] = useState(false);
+  const navigate = useNavigate();
   const options = {
     selectableRows: "none",
     responsive: "standard",
@@ -68,7 +73,7 @@ const DynamicMuiTable = ({
               >
                 <DeleteIcon />
               </button>
-              {tableMeta.rowData[1] ? (
+              {tableMeta.rowData[2] ? (
                 <button
                   className="action_btn"
                   title="Active"
@@ -107,12 +112,14 @@ const DynamicMuiTable = ({
     await deleteAPI(deleteUrl + `/${userId}`);
     setDeleteConfirm(false);
     refreshTable();
+    ParentList();
   };
 
   const onStatusConfirm = async () => {
     await statusAPI(statusUrl + `/${userId}`);
     setStatusConfirm(false);
     refreshTable();
+    ParentList();
   };
 
   const statusAPI = async (url) => {
@@ -162,6 +169,9 @@ const DynamicMuiTable = ({
         (data) => {
           setFormData(data.data);
           setIsEditForm(true);
+          if (singlePageForm) {
+            navigate(singlePageFormUrl);
+          }
         },
         (errors) => {},
         false,

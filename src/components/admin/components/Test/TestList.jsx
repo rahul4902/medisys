@@ -7,16 +7,16 @@ import { Link } from "react-router-dom";
 import { apiUrl } from "../../../../utils/constants";
 
 function TestList() {
-  // const [formData, setFormData] = useState({
-  //   name: "",
-  //   status: "",
-  // });
+  const [formData, setFormData] = useState({
+    name: "",
+    status: "",
+  });
   const [setErrors] = useState({
     name: "",
     status: "",
   });
   const [testData, setTestData] = useState([]);
-  const [setIsEditForm] = useState(false);
+  const [isEditForm, setIsEditForm] = useState(false);
   const [userId, setUserId] = useState(null);
 
   useEffect(() => {
@@ -103,6 +103,9 @@ function TestList() {
           setIsEditForm={setIsEditForm}
           userId={userId}
           setUserId={setUserId}
+          setFormData={setFormData}
+          singlePageForm={true}
+          singlePageFormUrl="/admin/diagnostic/test/edit"
         />
       </div>
     </div>

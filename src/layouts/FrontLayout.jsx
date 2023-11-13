@@ -12,7 +12,6 @@ const FrontLayout = (props) => {
       <Routes>{/* <Route path="/" element={<Home />} /> */}</Routes>
       <div>{children}</div>
       <WhatsAppIcon />
-      <Footer />
     </div>
   );
 };

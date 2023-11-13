@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import "../assets/css/admin.css";
 import Footer from "../components/admin/Footer";
 import NavBar from "../components/admin/NavBar";
@@ -6,9 +6,12 @@ import SideBar from "../components/admin/SideBar";
 import { Routes, Route } from "react-router-dom";
 import Dashboard from "../components/admin/Dashboard";
 import Test from "../components/admin/components/Test/Test";
+import TestEdit from "../components/admin/components/Test/TestEdit";
 import Department from "../components/admin/components/department/Department";
 import TestList from "../components/admin/components/Test/TestList";
 import Package from "../components/admin/components/packages/List";
+import Loader from "../components/Loader";
+import Category from "../components/admin/components/category/Category";
 
 const AdminLayout = (props) => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -24,11 +27,16 @@ const AdminLayout = (props) => {
     localStorage.setItem("sidebarState", !sidebarOpen ? "open" : "closed");
   };
 
-  // const showErrorToast = () => {
-  //   toast.error("This is an error message", {
-  //     position: toast.POSITION.TOP_CENTER,
-  //   });
-  // };
+  const routeArray = [
+    { path: "/", component: <Dashboard /> },
+    { path: "/diagnostic/test/", component: <TestList /> },
+    { path: "/diagnostic/test/create", component: <Test /> },
+    { path: "/diagnostic/test/edit", component: <TestEdit /> },
+    { path: "/diagnostic/department/", component: <Department /> },
+    { path: "/diagnostic/category/", component: <Category /> },
+    { path: "/packages", component: <Package /> },
+  ];
+
   return (
     <div className="admin-app">
       <SideBar isOpen={sidebarOpen} />
@@ -36,11 +44,19 @@ const AdminLayout = (props) => {
         <NavBar onSidebarToggle={handleSidebarToggle} />
         <main className="main">
           <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/diagnostic/test/" element={<TestList />} />
-            <Route path="/diagnostic/test/create" element={<Test />} />
-            <Route path="/diagnostic/department/" element={<Department />} />
-            <Route path="/packages" element={<Package />} />
+            {routeArray.map((linkItem, index) => (
+              <Route
+                key={index}
+                path={linkItem.path}
+                element={
+                  <>
+                    <Suspense fallback={<Loader />}>
+                      {linkItem.component}
+                    </Suspense>
+                  </>
+                }
+              />
+            ))}
           </Routes>
         </main>
         <Footer />

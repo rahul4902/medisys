@@ -4,6 +4,7 @@ import { apiUrl } from "../../../utils/constants";
 import { toast } from "react-toastify";
 import Loader from "../../Loader";
 import { useLocation } from "react-router-dom";
+import ExclamationIcon from "../../../assets/images/icons/svg/ExclamationIcon";
 const Search = () => {
   const [result, setResult] = useState([]);
   const [searchLoader, setSearchLoader] = useState(false);
@@ -42,10 +43,13 @@ const Search = () => {
 
   return (
     <>
-      <div className="container my-5">
-        <div className="col-12 mb-2">
+      <div className="container mt-5">
+        <div className="col-12 mb-2 text-center">
         {!searchLoader && recordCount > 0 && (
-          <h2 className="title">{recordCount} Test Found</h2>
+          <h2 className="title">{recordCount} Result Found</h2>
+        )}
+        {!searchLoader && !recordCount && (
+          <h2 className="title"><ExclamationIcon fill="#0e3f6c"/>  Ensure your spelling is accurate or try using a different term.</h2>
         )}
         </div>
        

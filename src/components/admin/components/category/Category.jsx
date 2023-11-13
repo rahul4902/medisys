@@ -7,37 +7,57 @@ import { toast } from "react-toastify";
 import DynamicMuiTable from "../DynamicMuiTable";
 import { apiUrl } from "../../../../utils/constants";
 
-function List() {
+function Category() {
   const [formData, setFormData] = useState({
     name: "",
+    parent_id: "",
     status: "",
   });
   const [errors, setErrors] = useState({
     name: "",
+    parent_id: "",
     status: "",
   });
-  const [departmentData, setDepartmentData] = useState([]);
+  const [categoryData, setCategoryData] = useState([]);
   const [isEditFrom, setIsEditForm] = useState(false);
   const [userId, setUserId] = useState(null);
+  const [category, setCategory] = useState([]);
 
   useEffect(() => {
-    getDepartmentList();
+    getCategoryList();
+    getCategoryListRow();
   }, []);
 
   const options = {
     responsive: "stacked",
   };
-  const getDepartmentList = async () => {
+
+  const getCategoryListRow = async () => {
+    const response = await axios({
+      method: "get",
+      url: `${apiUrl}/admin/category/list`,
+    });
+    handleApiResponse(
+      response,
+      (data) => {
+        setCategory(data.data);
+      },
+      (errors) => {},
+      setErrors,
+      false
+    );
+  };
+  const getCategoryList = async () => {
     try {
       const response = await axios({
         method: "get",
-        url: `${apiUrl}/admin/department/list`,
+        url: `${apiUrl}/admin/category/list`,
       });
 
       handleApiResponse(
         response,
         (data) => {
-          setDepartmentData(data.data);
+          setCategoryData(data.data);
         },
         (errors) => {},
         setErrors,
@@ -65,10 +85,10 @@ function List() {
       var editUrl;
       var method;
       if (isEditFrom) {
-        editUrl = `${apiUrl}/admin/department/update/` + userId;
+        editUrl = `${apiUrl}/admin/category/update/` + userId;
         method = "put";
       } else {
-        editUrl = `${apiUrl}/admin/department/create`;
+        editUrl = `${apiUrl}/admin/category/create`;
         method = "post";
       }
 
@@ -86,7 +106,8 @@ function List() {
             name: "",
             status: "",
           });
-          getDepartmentList();
+          getCategoryList();
+          getCategoryListRow();
           setIsEditForm(false);
         },
         (errors) => {
@@ -103,6 +124,7 @@ function List() {
   };
   var columns = [
     { name: "name", label: "Name" },
+    { name: "parentName", label: "Parent" },
     {
       name: "status",
       label: "Status",
@@ -127,18 +149,18 @@ function List() {
     <div className="row">
       <div className="col-lg-8 col-md-8 col-sm-12 col-12">
         <DynamicMuiTable
-          title={"Packages List"}
-          data={departmentData}
+          title={"Category List"}
+          data={categoryData}
           columns={columns}
-          deleteUrl={`${apiUrl}/admin/department/delete`}
-          statusUrl={`${apiUrl}/admin/department/status`}
-          editDataUrl={`${apiUrl}/admin/department/getById`}
-          refreshTable={getDepartmentList}
+          deleteUrl={`${apiUrl}/admin/category/delete`}
+          statusUrl={`${apiUrl}/admin/category/status`}
+          editDataUrl={`${apiUrl}/admin/category/getById`}
+          refreshTable={getCategoryList}
+          ParentList={getCategoryList}
           setFormData={setFormData}
           setIsEditForm={setIsEditForm}
           userId={userId}
           setUserId={setUserId}
-          singlePageForm={false}
         />
       </div>
       <div className="col-lg-4 col-md-4 col-sm-12 col-12">
@@ -161,7 +183,7 @@ function List() {
                     d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
                   ></path>
                 </svg>
-                <span>Add Package</span>
+                <span>{isEditFrom ? "Edit" : "Add"} Category</span>
               </h4>
             </div>
           </div>
@@ -183,20 +205,27 @@ function List() {
                   </span>
                 )}
               </div>
-              <div className="form-group mb-2">
-                <label>Special Instruction</label>
-                <textarea
-                  type="text"
-                  name="instruction"
-                  id="instruction"
-                  className="w-100 ic-t"
-                  value={formData.instruction}
+              <div className="col-12 mb-2">
+                <label>Category</label>
+                <select
+                  name="parent_id"
+                  id="parent_id"
+                  className=" form-select  ic"
+                  value={formData.parent_id}
                   onChange={handleChange}
-                  rows={2}
-                ></textarea>
-                {errors?.instruction && (
+                >
+                  <option value="">Select Parent</option>
+                  {category?.map((_v, _x) => {
+                    return (
+                      <option key={_x} value={_v.id}>
+                        {_v.name}
+                      </option>
+                    );
+                  })}
+                </select>
+                {errors?.parent_id && (
                   <span className="error text-danger fw-bold text-capitalize">
-                    {errors.instruction}
+                    {errors.parent_id}
                   </span>
                 )}
               </div>
@@ -232,4 +261,4 @@ function List() {
   );
 }
 
-export default List;
+export default Category;

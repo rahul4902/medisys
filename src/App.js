@@ -93,12 +93,14 @@ function App() {
                         {linkItem.component}
                       </Suspense>
                       <WhatsAppIcon />
-                      <Footer />
+                      {/* <Footer /> */}
                       {/* <QueryFormPopup /> */}
                     </div>
                   }
                 />
               ))}
+
+              
 
               <Route
                 path="/admin/*"
