@@ -1,4 +1,4 @@
-import CheckCircle from "../../icons/CheckCircle";
+import CheckCircle from "../../assets/images/icons/svg/CheckCircle";
 import CounterAnimation from "../Client/CounterAnimation";
 
 const PopularPackages = () => {

@@ -1,7 +1,6 @@
 import { useState } from "react";
-import Location from "../../icons/Location";
+import Location from "../../assets/images/icons/svg/Location";
 import axios from "axios";
-import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { apiUrl } from "../../utils/constants";
 import SearchInputBox from "./includes/SearchInputBox";

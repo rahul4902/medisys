@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../../assets/images/logo.png";
 import CartIcon from "../../../assets/images/icons/svg/CartIcon";
-import SearchInputBox from "./SearchInputBox";
+import useLocalStorage from "../../../hooks/useLocalStorage";
+import { useCart } from "../../../context/CartContext";
+
 const SiteNav = () => {
+  const { cart } = useCart();
+  const [totalCartItems, setTotalCartItems] = useState(0);
+
+  // setTotalCartItems(
+  //   cart.reduce((total, item) => total + (item.quantity || 0), 0)
+  // );
+
+  useEffect(() => {
+    setTotalCartItems(
+      cart.reduce((total, item) => total + (item.quantity || 0), 0)
+    );
+  }, [cart]);
+
   return (
     <div className="header">
+      
       <div className="main-header">
         <div className="top-nav">
           <div className="logo-side">
@@ -19,16 +35,16 @@ const SiteNav = () => {
               />
             </Link>
           </div>
-          
-            {/* <SearchInputBox /> */}
+
+          {/* <SearchInputBox /> */}
           <div className="right-side">
-            <a className="header-buttons" href="/checkout">
-              <span className="header-buttons-text">Cart</span>
-              <span className="header-cart-count">1</span>
+            <a className="header-buttons" href="/cart">
+              {/* <span className="header-buttons-text">Cart</span> */}
+              <span className="header-cart-count">{totalCartItems}</span>
               <CartIcon />
             </a>
             <div className="header-buttons">
-              <span className="header-buttons-text">Profile</span>
+              {/* <span className="header-buttons-text">Profile</span> */}
               <svg
                 width="1em"
                 height="1em"

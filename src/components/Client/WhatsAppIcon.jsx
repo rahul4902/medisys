@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import WhatsApp from "../../icons/WhatsApp";
+import WhatsApp from "../../assets/images/icons/svg/WhatsApp";
 
 const WhatsAppIcon = () => {
   return (

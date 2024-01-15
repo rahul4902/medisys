@@ -1,7 +1,7 @@
 import React from "react";
 import ContactImage from "../../assets/images/contact.svg";
 import PaperClip from "../../assets/images/icons/svg/PaperClip";
-import Location from "../../icons/Location";
+import Location from "../../assets/images/icons/svg/Location";
 import ContactIcon from "../../assets/images/icons/svg/ContactIcon";
 import MailIcon from "../../assets/images/icons/svg/MailIcon";
 import { Link } from "react-router-dom";

@@ -2,7 +2,6 @@ import React from "react";
 import MIceIcon from "../../../assets/images/icons/svg/MIceIcon";
 
 const MicroPhoneAnimation = (props) => {
-  
   return (
     <section className="microphone">
       <button

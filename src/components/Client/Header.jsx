@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Search from "../../icons/Search";
+import Search from "../../assets/images/icons/svg/Search";
 
 import { Link } from "react-router-dom";
 import CartIcon from "../../assets/images/icons/svg/CartIcon";
 import { useValue } from "../../context/clientContext";
-import WhatsApp from "../../icons/WhatsApp";
+import WhatsApp from "../../assets/images/icons/svg/WhatsApp";
 import SiteNav from "../Client/includes/SiteNav";
 const Header = ({ isStickyHeader }) => {
   const [isSticky, setIsSticky] = useState();

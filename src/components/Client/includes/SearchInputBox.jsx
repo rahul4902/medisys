@@ -8,6 +8,8 @@ import { apiUrl } from "../../../utils/constants";
 import { useValue } from "../../../context/clientContext";
 import MicroPhoneAnimation from "./MicroPhoneAnimation";
 import CloseIcon from "../../../assets/images/icons/svg/CloseIcon";
+import Spinner from "./Spinner";
+
 const SearchInputBox = () => {
   const navigate = useNavigate();
   const { query, setQuery } = useValue();
@@ -29,11 +31,11 @@ const SearchInputBox = () => {
 
     try {
       const response = await axios.get(
-        `${apiUrl}/test/autocomplete?query=${value}`
+        `${apiUrl}test/autocomplete?query=${value}`
       );
 
       if (response.data.status === 200) {
-        setSuggestions(response.data.data);
+        setSuggestions(response.data.data.products);
       } else {
         toast.error(response.data.message);
       }
@@ -50,10 +52,13 @@ const SearchInputBox = () => {
     setIsFocused(false);
   };
 
-  const clickSearch = (suggestion) => {
-    console.log("suggestion", suggestion);
+  const clickSearch = (suggestion, slug = null) => {
     setQuery(suggestion);
-    navigate(`/search?query=${suggestion}`);
+    if (slug) {
+      navigate(`/test/${slug}?query=${suggestion}`);
+    } else {
+      navigate(`/search?query=${suggestion}`);
+    }
     setIsFocused(false);
   };
 
@@ -100,9 +105,10 @@ const SearchInputBox = () => {
                 name="query"
               />
             </form>
+
             {isFocused ? (
               <div className="search-icon" onClick={handleBlur}>
-                <CloseIcon height="2rem" />
+                {searchLoader ? <Spinner /> : <CloseIcon height="2rem" />}
               </div>
             ) : (
               <div className="search-icon" onClick={startSpeechRecognition}>
@@ -117,9 +123,11 @@ const SearchInputBox = () => {
                   {suggestions.map((suggestion, index) => (
                     <li
                       key={index}
-                      onClick={() => clickSearch(suggestion.name)}
+                      onClick={() =>
+                        clickSearch(suggestion.title, suggestion.slug)
+                      }
                     >
-                      {suggestion.name}
+                      {suggestion.title}
                       {/* <small>({suggestion.sort_name})</small> */}
                     </li>
                   ))}

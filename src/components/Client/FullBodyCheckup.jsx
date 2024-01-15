@@ -1,12 +1,7 @@
 import CartIcon from "../../assets/images/icons/svg/CartIcon";
-import { useValue } from "../../context/clientContext";
-import ReadMoreOffer from "./ReadMoreOffer";
 const cardCounts = [1, 2, 3, 4, 5];
 const FullBodyCheckup = () => {
-  const { readMoreCanvas, setReadMoreCanvas } = useValue();
-  function readMore() {
-    setReadMoreCanvas(!readMoreCanvas);
-  }
+  
   return (
     <>
       <div className="container mt-5">
@@ -46,7 +41,7 @@ const FullBodyCheckup = () => {
                     <div className="footer d-flex justify-content-center gap-3">
                       <button
                         className="btn common-btn btn-secondary"
-                        onClick={readMore}
+                        
                       >
                         Read More
                       </button>
@@ -61,7 +56,6 @@ const FullBodyCheckup = () => {
           </div>
         </div>
       </div>
-      <ReadMoreOffer />
     </>
   );
 };

@@ -17,7 +17,9 @@
   --white-color: #fff;
   --border-color: whitesmoke;
 }
-
+.color-primary {
+  color: #0e3f6c;
+}
 html {
   overflow-x: hidden;
 }
@@ -40,11 +42,13 @@ a {
 }
 .loader {
   position: relative;
-  height: 100vh;
+  /* height: 100vh; */
+  height: auto;
   width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 20px;
 }
 .btn2-primary {
   background-color: #1faa88;
@@ -132,7 +136,7 @@ a {
 
 .button-container {
   flex: 1;
-  margin: 0 5px; 
+  margin: 0 5px;
 }
 
 .button-container .common-btn-hover-zoom:hover {
@@ -1208,12 +1212,11 @@ a {
 }
 
 @media (max-width: 991.98px) {
-  .p-30{
+  .p-30 {
     padding: 15px;
   }
-  .search-form .uploadBtn .text{
+  .search-form .uploadBtn .text {
     font-size: 16px;
-
   }
   .whatsapp-icon {
     display: inline-block !important;
@@ -1348,4 +1351,68 @@ a {
     transition: 0.5s;
     opacity: 1;
   }
+}
+
+.btn-outline-danger:hover svg {
+  fill: #fff;
+}
+
+.title {
+  color: #2f3032;
+}
+.checkout .title {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #2f3032;
+  margin-bottom: 0;
+}
+
+.checkoutContainer {
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
+  left: 0;
+  backdrop-filter: blur(10px);
+}
+.checkoutContainer .floating {
+  box-shadow: 0px 0px 10px 0px gray;
+}
+
+.orderAddress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00000048;
+}
+.orderContainer {
+  height: auto;
+  /* overflow: scroll; */
+  background-color: white;
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.orderAddress ::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.orderAddress ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.orderAddress ::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+.orderAddress ::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
